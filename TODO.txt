@@ -1,0 +1,21 @@
+#TODOS
+
+- login
+- import
+- export
+
+#PATHS
+'/'             home
+'/login'        login page
+'/logout'       logout
+'/campaigns'    campaigns page
+'/edit'         edit campaign
+'/automation'   automation
+'/home'         dashboard
+'/settings'     usersettings
+'/preview'      email pre
+'/subscribe'    add sub
+'/unsubscribe'  remove sub 
+
+https://jwt.io/
+https://web.postman.co/

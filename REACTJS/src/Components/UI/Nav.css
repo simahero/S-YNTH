@@ -1,0 +1,29 @@
+.Nav{
+    height: 60px;
+    background-color: #121212;
+    display: flex;
+    align-items: center;
+}
+
+.BrandHolder{
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Logo {
+    width: 120px;
+    height: auto;
+    opacity: 0;
+}
+
+.LogoBrand{
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.NavText {
+    color: #dddddd;
+}

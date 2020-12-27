@@ -1,0 +1,64 @@
+.LoginMain{
+    display: flex;
+    height: 100vh;
+}
+
+.LoginImageHolder {
+    flex: 50%;
+    background-image: url("https://cdn.pixabay.com/photo/2016/08/11/23/55/redwood-national-park-1587301_960_720.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.LoginBox {
+    flex: 50%;
+    background-color: #121212;
+}
+
+.LoginFormWrapper {
+    width: 70%;
+    height: 100vh;
+    display: flex;
+    margin: auto;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#ffffff06;
+    border-radius: 15px;
+    width: 100%;
+    height: 350px;
+}
+
+.LoginInput {
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #dddddd;
+}
+
+.LoginHeader {
+    color: #dddddd;
+    margin-bottom: 30px;
+}
+
+.LoginError{
+    background-color: #CF6679;
+    width: 80%;
+    text-align: center;
+    color: #dddddd;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px 0;
+}

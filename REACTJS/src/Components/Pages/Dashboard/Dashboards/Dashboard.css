@@ -1,0 +1,23 @@
+.DashboardHeadingWrapper {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.DashboardHeading {
+    text-align: center;
+    color: #dddddd;
+    font-size: 26px;
+}
+
+.ActionButtons {
+    min-width: 36px !important;
+}
+
+.NewCampaign {
+    background-color: #dddddd !important;
+    position: absolute !important;
+    right: 10px;
+}

@@ -1,0 +1,46 @@
+.HeaderOptionsInput{
+    width: 90%;
+    display: block;
+    margin: auto;
+}
+
+.HeaderOptionsAlign{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.HeaderOptionsColorPicker{
+    display: block;
+    margin: auto;
+}
+
+.AlignButtons {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff08;
+}
+
+.AlignButtons:hover {
+    background-color: #ffffff10;
+    cursor: pointer;
+}
+
+.AlignButtons:active {
+    background-color: #ffffff16;
+    cursor: pointer;
+}
+
+.FaIcon {
+    color: #dddddd;
+}
+
+.ColorPanel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}

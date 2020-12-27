@@ -1,0 +1,19 @@
+.EditBox {
+    background-color: #ffffff10;
+    border-radius: 5px;
+    color: #dddddd;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    flex: 50%;
+}
+
+.EditBox:hover {
+    background-color: #ffffff16;
+    cursor: pointer;
+}
+
+.SidebarHeader {
+    display: flex;
+
+}

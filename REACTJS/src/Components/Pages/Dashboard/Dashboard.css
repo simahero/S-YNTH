@@ -1,0 +1,35 @@
+
+
+.HomeMain{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: #121212;
+}
+
+.HomeSidebar{
+    flex: 20%;
+    height: 100vh;
+    min-width: 250px;
+}
+
+.HomeBox {
+    background-color: #ffffff10;
+    border-radius: 5px;
+    color: #dddddd;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+}
+
+.HomeBox:hover {
+    background-color: #ffffff16;
+    cursor: pointer;
+}
+
+.HomeDashboard{
+    flex: 80%;
+    height: 100vh;
+    background: rgb(18,18,18);
+    background: linear-gradient(175deg, rgba(18,18,18,1) 0%, rgba(20,20,20,1) 100%);
+}

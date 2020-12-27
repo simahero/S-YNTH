@@ -1,0 +1,50 @@
+.EditMain{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: #121212;
+}
+
+.EditSidebar{
+    flex: 20%;
+    height: 100vh;
+    min-width: 250px;
+}
+
+.EditPreview{
+    flex: 80%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.EditPreviewHolder{
+    width: 98%;
+    height: 98vh;
+    min-width: 800px;
+    background-color: #ffffff10;
+}
+
+.EditOptions{
+    color: #dddddd;
+    margin: 0 1%;
+}
+
+.EditBlocks{
+    margin: 0 1%;
+    overflow-y: visible !important;
+    height: auto;
+}
+
+.EditTableHolder{
+    display: block;
+    margin: auto;
+    margin-top: 1%;
+    width: 90%;
+}
+
+.EditTableHolder table tr td:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
