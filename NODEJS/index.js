@@ -58,11 +58,11 @@ app.use('/api/v1/get', api(connection));
 app.use('/api/v1/subscription', subscription(connection));
 app.use('/api/v1/create', creation(connection));
 
-/*
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../REACTJS/build/index.html'));
 });
-*/
+
 
 app.listen(port, () => {
     console.log(`Server started on port: ${port}`)
