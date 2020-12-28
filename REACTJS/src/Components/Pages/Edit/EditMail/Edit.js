@@ -1,4 +1,5 @@
 import React from 'react';
+import { MailProvider } from '../../../Context/MailContext';
 import Mail from './Mail';
 import Sidebar from './Sidebar';
 import './Edit.css';
@@ -32,28 +33,24 @@ class Edit extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.state.loading &&
-                    <LoadingScreen />
-                }
-                <Nav />
-                <div className="EditMain">
-                    <Sidebar
-                        state={this.state}
-                        handler={this.handler}
-                    />
-                    <div className="EditPreview">
-                        <div className="EditPreviewHolder">
-                            <div className="EditTableHolder">
-                                <Mail
-                                    state={this.state}
-                                    handler={this.handler}
-                                />
+            <MailProvider value={{ state: this.state, handler: this.handler }} >
+                <div>
+                    {this.state.loading &&
+                        <LoadingScreen />
+                    }
+                    <Nav />
+                    <div className="EditMain">
+                        <Sidebar />
+                        <div className="EditPreview">
+                            <div className="EditPreviewHolder">
+                                <div className="EditTableHolder">
+                                    <Mail />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </MailProvider>
         )
     }
 }

@@ -1,11 +1,24 @@
-import React from 'react';
+import React, {useContext} from 'react';
+
+import MailContext from '../../../../Context/MailContext';
 
 const Paragraph = (props) => {
 
+    const context = useContext(MailContext);
+    const options = context.state.blocks[props.index].options;
+
+    const setSidebarOptions = (index) => {
+        context.handler({
+            sideBarOptions: 'Paragraph',
+            sideBarTab: 'options',
+            currentIndex: index
+        });
+    }
+
     return (
-        <tr style={props.options.style} onClick={() => {props.switchOptions('Paragraph', props.index)}}>
+        <tr style={options.style} onClick={() => {setSidebarOptions(props.index)}}>
             <td>
-                <p>{props.options.content || 'Paragraph'}</p>
+                <p>{options.content}</p>
             </td>
         </tr>
     )

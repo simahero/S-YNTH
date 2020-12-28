@@ -1,5 +1,6 @@
 .Nav{
     height: 60px;
+    min-height: 60px;
     background-color: #121212;
     display: flex;
     align-items: center;
@@ -14,9 +15,7 @@
 }
 
 .Logo {
-    width: 120px;
-    height: auto;
-    opacity: 0;
+    height: 35px;
 }
 
 .LogoBrand{

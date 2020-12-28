@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   setAuth = (isAuth) => {
-    if (!isAuth){
+    if (!isAuth) {
       AuthService.logout();
     }
     this.setState({
@@ -59,13 +59,13 @@ class App extends React.Component {
               <Route path="/login" render={(props) => <Login {...props} />} />
               <Route path="/edit" render={(props) => <Edit {...props} />} />
 
-            //CREATE ROUTES
+              //CREATE ROUTES
               <ProtectedRoute path='/create/campaign' isAuth={isAuth} Component={CreateCampaign} />
               <ProtectedRoute path='/create/template' isAuth={isAuth} Component={CreateTemplate} />
               <ProtectedRoute path='/create/audience' isAuth={isAuth} Component={CreateAudience} />
 
 
-            //DASHBOARD ROUTES
+              //DASHBOARD ROUTES
               <ProtectedRoute path='/dashboard/campaigns' Component={Dashboard} dashboard={'campaigns'} />
               <ProtectedRoute path='/dashboard/templates' Component={Dashboard} dashboard={'templates'} />
               <ProtectedRoute path='/dashboard/audience' Component={Dashboard} dashboard={'audience'} />
