@@ -11,6 +11,9 @@ import Dashboard from './Components/Pages/Dashboard/Dashboard';
 import LoadingScreen from './Components/UI/LoadingScreen';
 
 import CreateCampaign from './Components/Pages/Create/CreateCampaign';
+import CreateTemplate from './Components/Pages/Create/CreateTemplate';
+import CreateAudience from './Components/Pages/Create/CreateAudience';
+
 
 import './App.css';
 
@@ -54,6 +57,8 @@ class App extends React.Component {
   
             //CREATE ROUTES
             <ProtectedRoute path='/create/campaign' isAuth={isAuth} Component={CreateCampaign} />
+            <ProtectedRoute path='/create/template' isAuth={isAuth} Component={CreateTemplate} />
+            <ProtectedRoute path='/create/audience' isAuth={isAuth} Component={CreateAudience} />
   
   
             //DASHBOARD ROUTES

@@ -16,8 +16,9 @@
     min-width: 36px !important;
 }
 
-.NewCampaign {
+.NewCampaign, .NewTemplate, .NewAudience {
     background-color: #dddddd !important;
     position: absolute !important;
     right: 10px;
+    min-width: 200px !important;
 }

@@ -12,8 +12,9 @@ const CampaignDataTable = (props) => {
   const columns = [
     { field: 'id', headerName: 'ID', flex: 2 },
     { field: 'name', headerName: 'Campaign name', flex: 2 },
-    { field: 'created_at', headerName: 'Crated at', type: 'date', flex: 2 },
-    { field: 'audience_id', headerName: 'Audience', flex: 2 },
+    { field: 'created_at', headerName: 'Created at', type: 'date', flex: 2 },
+    { field: 'template_id', headerName: 'Template ID' },
+    { field: 'tags', headerName: 'Audience tags', flex: 2 },
     {
       field: 'buttons', sortable: false, disableClickEventBubbling: true, headerName: 'Actions', width: 300,
       renderCell: (param) => {

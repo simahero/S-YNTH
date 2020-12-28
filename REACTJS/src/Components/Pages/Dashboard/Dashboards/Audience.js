@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import API from '../../../API/API';
+import Button from "@material-ui/core/Button";
 import AudienceDataTable from '../../../UI/AudienceDataTable';
+import {BiAddToQueue} from 'react-icons/bi';
 import './Dashboard.css';
 
 class Audience extends React.Component {
@@ -41,6 +44,7 @@ class Audience extends React.Component {
             <div>
                 <div className="DashboardHeadingWrapper">
                     <h2 className="DashboardHeading">Audience</h2>
+                    <Button className="NewAudience" ><Link to='/create/audience'><BiAddToQueue /> IMPORT CONTACTS </Link></Button>
                 </div>
                 <AudienceDataTable rows={this.state.data} loading={this.state.loading} />
             </div>

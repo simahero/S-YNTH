@@ -13,12 +13,13 @@ module.exports = (connection) => {
     }))
 
     router.post('/audience', ((req, res) => {
+        var user_id = req.user.user_id;
         var email = req.body.email;
         var firstname = req.body.firstname;
         var lastname = req.body.lastname;
         var tags = req.body.tags;
 
-        connection.query('SELECT * FROM audiences WHERE email = ?', [email], (error, result) => {
+        connection.query('SELECT * FROM audiences WHERE email = ? AND user_id = ?', [email, user_id], (error, result) => {
             if (error) return res.status(500).send(error);
             if (result.length > 0) {
                 currentTags = JSON.parse(result[0].tags);
@@ -40,10 +41,10 @@ module.exports = (connection) => {
     }))
 
     router.post('/audience/import', verify, (async (req, res) => {
+        var user_id = req.user.user_id;
         var csv = req.body.csv;
         var method = req.body.method;
         var tag = req.body.tags;
-        var user_id = req.user.user_id;
 
         let status = await importCSV(user_id, csv, method, tag)
 
@@ -61,7 +62,7 @@ module.exports = (connection) => {
 
         await Promise.all(csv.map(async element => {
 
-            return SQLPromise.query(connection, 'SELECT * FROM audiences WHERE email = ?', [element.email])
+            return SQLPromise.query(connection, 'SELECT * FROM audiences WHERE email = ? AND user_id = ?', [element.email, user_id])
                 .then(result => {
                     if (result.length > 0) {
                         currentTags = JSON.parse(result[0].tags);
