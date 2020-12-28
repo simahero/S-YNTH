@@ -1,4 +1,3 @@
-import { RenderingZone } from '@material-ui/data-grid'
 import React from 'react'
 
 class Home extends React.Component {

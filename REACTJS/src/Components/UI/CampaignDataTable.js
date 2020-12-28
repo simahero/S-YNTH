@@ -7,7 +7,7 @@ import { GrAnalytics } from 'react-icons/gr';
 import { MdModeEdit, MdSend } from 'react-icons/md';
 import { AiFillDelete } from 'react-icons/ai';
 
-const DataTable = (props) => {
+const CampaignDataTable = (props) => {
 
   const columns = [
     { field: 'id', headerName: 'ID', flex: 2 },
@@ -65,4 +65,4 @@ const DataTable = (props) => {
   );
 }
 
-export default DataTable;
+export default CampaignDataTable;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import API from '../../../API/API';
 import Button from "@material-ui/core/Button";
-import DataTable from '../../../UI/DataTable';
+import CampaignDataTable from '../../../UI/CampaignDataTable';
 import {BiAddToQueue} from 'react-icons/bi';
 import './Dashboard.css';
 
@@ -18,7 +18,6 @@ class Campaigns extends React.Component {
 
     componentDidMount() {
         this.getData();
-        console.log('Mounted');
     }
 
     getData = () => {
@@ -47,7 +46,7 @@ class Campaigns extends React.Component {
                     <h2 className="DashboardHeading">Campaigns</h2>
                     <Button className="NewCampaign" ><Link to='/create/campaign'><BiAddToQueue /> CREATE NEW CAMPAIGN </Link></Button>
                 </div>
-                <DataTable rows={this.state.data} loading={this.state.loading} />
+                <CampaignDataTable rows={this.state.data} loading={this.state.loading} />
             </div>
         );
     }
