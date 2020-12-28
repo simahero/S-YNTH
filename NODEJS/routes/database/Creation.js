@@ -39,18 +39,19 @@ module.exports = (connection) => {
 
     }))
 
-    router.post('/audience/import', (async (req, res) => {
+    router.post('/audience/import', verify, (async (req, res) => {
         var csv = req.body.csv;
         var method = req.body.method;
         var tag = req.body.tags;
+        var user_id = req.user.user_id;
 
-        let status = await importCSV(csv, method, tag)
+        let status = await importCSV(user_id, csv, method, tag)
 
         res.status(200).send(status);
 
     }))
 
-    const importCSV = async (csv, method, tag) => {
+    const importCSV = async (user_id, csv, method, tag) => {
 
         var status = {
             inserted: 0,
@@ -78,7 +79,7 @@ module.exports = (connection) => {
                                 status.skipped.push(element);
                             })
                     } else {
-                        return SQLPromise.query(connection, 'INSERT INTO audiences (email, firstname, lastname, tags) VALUES (?)', [[element.email, element.firstname, element.lastname, JSON.stringify(tag)]])
+                        return SQLPromise.query(connection, 'INSERT INTO audiences (user_id, email, firstname, lastname, tags) VALUES (?)', [[user_id, element.email, element.firstname, element.lastname, JSON.stringify(tag)]])
                             .then(() => {
                                 status.inserted++;
                             }).catch(() => {
