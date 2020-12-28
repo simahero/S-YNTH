@@ -23,14 +23,12 @@ class Campaigns extends React.Component {
     getData = () => {
         API.get('/get/campaigns')
             .then(res => {
-                console.log(res.data);
                 this.setState({
                     loading: false,
                     data: res.data
                 });
             })
             .catch(err => {
-                console.log(err);
                 this.setState({
                     loading: false,
                     data: []

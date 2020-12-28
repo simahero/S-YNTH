@@ -28,7 +28,6 @@ class Dashboard extends React.Component {
         this.setState({
             loading: false
         });
-        console.log(this.context);
     }
 
     renderDashboard(param) {

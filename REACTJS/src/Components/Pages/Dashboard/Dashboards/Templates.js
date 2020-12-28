@@ -2,19 +2,55 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import API from '../../../API/API';
 import Button from "@material-ui/core/Button";
-import CampaignDataTable from '../../../UI/CampaignDataTable';
-import {BiAddToQueue} from 'react-icons/bi';
+import TemplateDataTable from '../../../UI/TemplateDataTable';
+import { BiAddToQueue } from 'react-icons/bi';
 import './Dashboard.css';
 
-const Templates = () => {
-    return (
-        <div>
-            <div className="DashboardHeadingWrapper">
-                <h2 className="DashboardHeading">Templates</h2>
-                <Button className="NewTemplate" ><Link to='/create/template'><BiAddToQueue /> CREATE NEW TEMPLATE </Link></Button>
+
+class Templates extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+            data: []
+        };
+    }
+
+    componentDidMount() {
+        this.getData();
+    }
+
+    getData = () => {
+        API.get('/get/templates')
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    loading: false,
+                    data: res.data
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    loading: false,
+                    data: []
+                });
+            });
+
+    }
+
+    render() {
+        return (
+            <div>
+                <div className="DashboardHeadingWrapper">
+                    <h2 className="DashboardHeading">Templates</h2>
+                    <Button className="NewTemplate" ><Link to='/create/template'><BiAddToQueue /> CREATE NEW TEMPLATE </Link></Button>
+                </div>
+                <TemplateDataTable rows={this.state.data} loading={this.state.loading} />
             </div>
-        </div>
-    )
+        )
+    }
+
 }
 
 export default Templates;

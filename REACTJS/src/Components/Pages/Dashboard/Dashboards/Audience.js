@@ -23,14 +23,13 @@ class Audience extends React.Component {
     getData = () => {
         API.get('/get/audiences')
             .then(res => {
-                console.log(res.data);
+                console.log(res)
                 this.setState({
                     loading: false,
                     data: res.data
                 });
             })
             .catch(err => {
-                console.log(err);
                 this.setState({
                     loading: false,
                     data: []
@@ -44,7 +43,7 @@ class Audience extends React.Component {
             <div>
                 <div className="DashboardHeadingWrapper">
                     <h2 className="DashboardHeading">Audience</h2>
-                    <Button className="NewAudience" ><Link to='/create/audience'><BiAddToQueue /> IMPORT CONTACTS </Link></Button>
+                    <Button className="NewAudience" ><Link to='/create/audience'><BiAddToQueue /> MANAGE AUDIENCE </Link></Button>
                 </div>
                 <AudienceDataTable rows={this.state.data} loading={this.state.loading} />
             </div>
