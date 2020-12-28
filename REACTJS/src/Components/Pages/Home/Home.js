@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import LoadingScreen from '../../UI/LoadingScreen';
-import UserContext from '../Context/UserContext'
+import UserContext from '../../Context/UserContext'
 
 
 const Home = (props) => {
