@@ -1,0 +1,51 @@
+.CreateAudience {
+    background-color: #121212;
+    min-height: 100vh;
+}
+
+.DragAndDropHolder {
+    min-width: 500px;
+    min-height: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dddddd;
+}
+
+.RadioGroupHolder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RadioGroup {
+    border: solid 3px black;
+	display: inline-block;
+	margin: 20px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.RadioInput {
+	position: absolute;
+	visibility: hidden;
+	display: none;
+}
+
+.RadioLabel {
+	color: black;
+	display: inline-block;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 5px 20px;
+  }
+
+input[type=radio]:checked + label {
+	color: #ccc8ce;
+	background: black;
+}
+
+.OptionDisplay {
+    display: flex;
+}

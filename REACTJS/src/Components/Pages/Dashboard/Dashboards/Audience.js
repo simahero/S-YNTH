@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import API from '../../../API/API';
+import API from '../../../../Utils/API/API';
 import Button from "@material-ui/core/Button";
-import AudienceDataTable from '../../../UI/AudienceDataTable';
+import AudienceDataTable from '../../../UI/DataTables/AudienceDataTable';
 import {BiAddToQueue} from 'react-icons/bi';
 import './Dashboard.css';
 

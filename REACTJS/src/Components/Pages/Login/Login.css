@@ -7,10 +7,18 @@
     flex: 50%;
     background: rgb(18,18,18);
     background: linear-gradient(185deg, rgba(18,18,18,1) 0%, rgba(20,20,20,1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* background-image: url("https://cdn.pixabay.com/photo/2016/08/11/23/55/redwood-national-park-1587301_960_720.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; */
+}
+
+.LoginImage {
+    max-width: 80%;
+    max-height: 80vh;
 }
 
 .LoginBox {

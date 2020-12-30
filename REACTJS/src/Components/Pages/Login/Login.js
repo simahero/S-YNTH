@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Redirect } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
-import AuthService from '../../Auth/AuthService';
+import AuthService from '../../../Utils/Auth/AuthService';
 import UserContext from '../../Context/UserContext'
 
 import './Login.css';
@@ -42,6 +42,7 @@ class Login extends React.Component {
         return (
             <div className="LoginMain">
                 <div className="LoginImageHolder">
+                    <img className="LoginImage" src="../../../../assets/images/login.png" alt='LoginDesign' />
                 </div>
                 <div className="LoginBox">
                 {this.state.redirect.pathname &&

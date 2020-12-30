@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import API from '../../../API/API';
+import API from '../../../../Utils/API/API';
 import Button from "@material-ui/core/Button";
-import TemplateDataTable from '../../../UI/TemplateDataTable';
+import TemplateDataTable from '../../../UI/DataTables/TemplateDataTable';
 import { BiAddToQueue } from 'react-icons/bi';
 import './Dashboard.css';
 

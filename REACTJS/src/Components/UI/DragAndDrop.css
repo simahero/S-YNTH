@@ -1,0 +1,28 @@
+.DraggedOut {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.DraggedIn {
+    border: dashed #121212 3px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.DragError {
+    color: #121212;
+    border-radius: 5px;
+    width: 90%;
+    text-align: center;
+    background-color: #CF6679; 
+}

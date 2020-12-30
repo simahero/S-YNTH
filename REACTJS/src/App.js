@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import ProtectedRoute from './ProtectedRoute';
+import React from 'react';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import ProtectedRoute from './Components/Auth/ProtectedRoute';
 
-import AuthService from './Components/Auth/AuthService';
+import AuthService from './Utils/Auth/AuthService';
 import { UserProvider } from './Components/Context/UserContext';
 
 import Login from './Components/Pages/Login/Login';
@@ -83,11 +83,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-/*
-<Route path="/dashboard/campaigns" render={(props) => <Dashboard dashboard={'campaigns'} {...props} />} />
-<Route path="/dashboard/audience" render={(props) => <Dashboard dashboard={'audience'} {...props} />} />
-<Route path="/dashboard/automation" render={(props) => <Dashboard dashboard={'automation'} {...props} />} />
-<Route path="/dashboard/forms" render={(props) => <Dashboard dashboard={'forms'} {...props} />} />
-<Route path="/dashboard/analytics" render={(props) => <Dashboard dashboard={'analytics'} {...props} />} />
-*/
