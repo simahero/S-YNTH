@@ -6,6 +6,7 @@ import AuthService from './Utils/Auth/AuthService';
 import { UserProvider } from './Components/Context/UserContext';
 
 import Login from './Components/Pages/Login/Login';
+import Logout from './Components/Pages/Login/Logout';
 import Edit from './Components/Pages/Edit/EditMail/Edit';
 import Dashboard from './Components/Pages/Dashboard/Dashboard';
 import Home from './Components/Pages/Home/Home';
@@ -22,7 +23,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuth: true
+      isAuth: false
     }
   }
 
@@ -52,29 +53,28 @@ class App extends React.Component {
     return (
       <UserProvider value={{ isAuth: isAuth, setAuth: setAuth }}>
         <Router>
-          <div>
-            <Switch>
+          <Switch>
 
-              <Route exact path="/" render={(props) => <Home {...props} />} />
-              <Route path="/login" render={(props) => <Login {...props} />} />
-              <Route path="/edit" render={(props) => <Edit {...props} />} />
+            <Route exact path="/" render={(props) => <Home {...props} />} />
+            <Route path="/login" render={(props) => <Login {...props} />} />
+            <Route path="/logout" render={(props) => <Logout {...props} />} />
+            <Route path="/edit" render={(props) => <Edit {...props} />} />
 
-              //CREATE ROUTES
-              <ProtectedRoute path='/create/campaign' isAuth={isAuth} Component={CreateCampaign} />
-              <ProtectedRoute path='/create/template' isAuth={isAuth} Component={CreateTemplate} />
-              <ProtectedRoute path='/create/audience' isAuth={isAuth} Component={CreateAudience} />
+            {/* CREATE ROUTES */}
+            <ProtectedRoute path='/create/campaign' isAuth={isAuth} Component={CreateCampaign} />
+            <ProtectedRoute path='/create/template' isAuth={isAuth} Component={CreateTemplate} />
+            <ProtectedRoute path='/create/audience' isAuth={isAuth} Component={CreateAudience} />
 
 
-              //DASHBOARD ROUTES
-              <ProtectedRoute path='/dashboard/campaigns' Component={Dashboard} dashboard={'campaigns'} />
-              <ProtectedRoute path='/dashboard/templates' Component={Dashboard} dashboard={'templates'} />
-              <ProtectedRoute path='/dashboard/audience' Component={Dashboard} dashboard={'audience'} />
-              <ProtectedRoute path='/dashboard/automation' Component={Dashboard} dashboard={'automation'} />
-              <ProtectedRoute path='/dashboard/forms' Component={Dashboard} dashboard={'forms'} />
-              <ProtectedRoute path='/dashboard/analytics' Component={Dashboard} dashboard={'analytics'} />
+            {/* DASHBOARD ROUTES */}
+            <ProtectedRoute path='/dashboard/campaigns' Component={Dashboard} dashboard={'campaigns'} />
+            <ProtectedRoute path='/dashboard/templates' Component={Dashboard} dashboard={'templates'} />
+            <ProtectedRoute path='/dashboard/audience' Component={Dashboard} dashboard={'audience'} />
+            <ProtectedRoute path='/dashboard/automation' Component={Dashboard} dashboard={'automation'} />
+            <ProtectedRoute path='/dashboard/forms' Component={Dashboard} dashboard={'forms'} />
+            <ProtectedRoute path='/dashboard/analytics' Component={Dashboard} dashboard={'analytics'} />
 
-            </Switch>
-          </div>
+          </Switch>
         </Router>
       </UserProvider>
     );

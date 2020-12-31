@@ -11,6 +11,7 @@ const auth = require('./routes/auth/Auth')
 const api = require('./routes/database/Database');
 const subscription = require('./routes/database/Subscription');
 const creation = require('./routes/database/Creation');
+const analytics = require('./routes/database/Analytics')
 
 const port = process.env.PORT || 3000;
 
@@ -43,6 +44,8 @@ var transporter = nodemailer.createTransport({
     }
   });
 
+  
+
 const app = express();
 const router = express.Router();
 
@@ -57,6 +60,36 @@ app.use('/api/v1/auth', auth(connection));
 app.use('/api/v1/get', api(connection));
 app.use('/api/v1/subscription', subscription(connection));
 app.use('/api/v1/create', creation(connection));
+app.use('/api/v1/analytics', analytics(connection));
+
+app.get('/test', (req, res) => {
+
+    nodemailer.createTestAccount((err, account) => {
+        // create reusable transporter object using the default SMTP transport
+        var tr = nodemailer.createTransport({
+            host: 'smtp.ethereal.email',
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: account.user, // generated ethereal user
+                pass: account.pass  // generated ethereal password
+            }
+        });
+
+        var mailOP = {
+            from: "me",
+            to: "zoilei7@gmail.com", 
+            subject: "test", 
+            html: "<div><img src='http://localhost:5000/api/v1/analytics/track?campaign_id=testC&audience_id=testA'><a target='_blank' href='http://localhost:5000/api/v1/analytics/redirect?url=https://google.com&campaign_id=1&audience_id=1&link_id=1'>TEST LINK </a></div>"
+        }
+    
+        tr.sendMail(mailOP).then(info=>{
+            console.log('Preview URL: ' + nodemailer.getTestMessageUrl(info));
+        });
+
+    });
+
+})
 
 /*
 app.get('*', (req, res) => {

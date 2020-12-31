@@ -1,7 +1,7 @@
 #TODOS
 
-- login
-- import
+- lazyload
+- single pages: campaign, template, audience, forms, analytics
 - export
 
 #PATHS
@@ -19,3 +19,28 @@
 
 https://jwt.io/
 https://web.postman.co/
+
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const Home = lazy(() => import('./routes/Home'));
+const Shop = lazy(() => import('./routes/Shop'));
+
+const App = () => {
+    return ( 
+    <Router>
+      <Suspense fallback={<div>Page is Loading...</div>}>
+        <Switch>
+          <Route exact path="/" component={Shop}/>
+          <Route path="/shop" component={Shop}/>
+        </Switch>
+      </Suspense>
+    </Router>
+  )
+
+<Redirect to={{
+            pathname: '/order',
+            state: { id: '123' }
+        }}
+/>
+this.props.location.state.id

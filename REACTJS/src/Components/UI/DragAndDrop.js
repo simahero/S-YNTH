@@ -65,6 +65,7 @@ class DragAndDrop extends React.Component {
                     CLICK HERE TO IMPORT YOUR CSV
                 </Button>
                 <div > OR DROP HERE </div>
+                {this.children}
             </div>
         )
     }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import AuthService from '../../../Utils/Auth/AuthService';
@@ -88,70 +88,5 @@ class Login extends React.Component {
     }
 
 }
-
-/*
-const Login = (props) => {
-
-    const[username, setUsername] = useState();
-    const[password, setPassword] = useState();
-    const[error, setError] = useState(false);
-
-    const signIn = async(e) => {
-        e.preventDefault();
-        let res = await AuthService.login(username, password);
-        if (res.token) {
-            console.log(res.token);
-            return <Redirect to={{pathname: '/dashboard/campaigns', state: {from: props.location}}} />
-        } else if (res.error){
-            setError(true);
-        }
-        
-    }
-
-    return (
-        <div className="LoginMain">
-            <div className="LoginImageHolder">
-            </div>
-            <div className="LoginBox">
-                <Box boxshadow={2} className="LoginFormWrapper">
-                <form 
-                className="LoginForm"
-                >
-                <h2 className="LoginHeader"> SIGN IN! </h2>
-                {error === true &&
-                    <h4 className="LoginError">
-                    Incorrect username or password!
-                    </h4>
-                }
-                    <input 
-                    className="LoginInput" 
-                    placeholder="Username" 
-                    name="username" 
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    ></input>
-                    <input 
-                    className="LoginInput" 
-                    placeholder="Password" 
-                    name="password" 
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    ></input>
-                    <input 
-                    className="LoginInput" 
-                    type="submit" 
-                    value="SIGN IN"
-                    onClick={(e) => signIn(e)}
-                    ></input>
-                </form>
-                </Box>
-            </div>
-        </div>
-    )
-}
-
-*/
 
 export default Login;

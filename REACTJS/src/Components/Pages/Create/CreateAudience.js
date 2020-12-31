@@ -21,20 +21,20 @@ class CreateAudience extends React.Component {
 
     handleFileChange = (file, wasDropped) => {
 
-        if (wasDropped){
-            if (file && file.length === 1){
+        if (wasDropped) {
+            if (file && file.length === 1) {
                 let ext = file[0].name.split('.')[1];
-                if(ext === 'csv'){
+                if (ext === 'csv') {
                     this.setState({
                         file: file,
                         error: '',
                         loading: true
                     })
                 } else {
-                    this.setState({error: 'Please upload a CSV file!'});
+                    this.setState({ error: 'Please upload a CSV file!' });
                 }
             } else {
-                this.setState({error: 'Please only drop one file!'});
+                this.setState({ error: 'Please only drop one file!' });
             }
         } else {
             this.setState({
@@ -43,15 +43,15 @@ class CreateAudience extends React.Component {
                 loading: true
             })
         }
-        if (this.state.error === '' && this.state.file){
-            this.setState({loading: true});
+        if (this.state.error === '' && this.state.file) {
+            this.setState({ loading: true });
             csvToJSON(this.state.file, this.state.delimiter)
-            .then(res => {
-                this.setState({contacts: res, loading: false})
-            })
-            .catch(err => {
-                this.setState({error: err, loading: false})
-            })
+                .then(res => {
+                    this.setState({ contacts: res, loading: false })
+                })
+                .catch(err => {
+                    this.setState({ error: err, loading: false })
+                })
 
         }
     }
@@ -62,15 +62,16 @@ class CreateAudience extends React.Component {
                 <div>
                     <Paper elevation={3} style={{ margin: '10px 50px' }}>
                         <div className='DragAndDropHolder'>
-                            <DragAndDrop accept=".csv" error={this.state.error} handleFileChange={this.handleFileChange} />
+                            <DragAndDrop accept=".csv" error={this.state.error} handleFileChange={this.handleFileChange} >
+                                <TextField id="select" label="Delimiter" value={this.state.delimiter} onChange={(e) => this.setState({ delimiter: e.target.value })} select>
+                                    <MenuItem value=";">;</MenuItem>
+                                    <MenuItem value=",">,</MenuItem>
+                                    <MenuItem value=":">:</MenuItem>
+                                    <MenuItem value="|">|</MenuItem>
+                                    <MenuItem value="~">~</MenuItem>
+                                </TextField>
+                            </DragAndDrop>
                         </div>
-                        <TextField id="select" label="Delimiter" value=";" select>
-                            <MenuItem value=";">;</MenuItem>
-                            <MenuItem value=",">,</MenuItem>
-                            <MenuItem value=":">:</MenuItem>
-                            <MenuItem value="|">|</MenuItem>
-                            <MenuItem value="~">~</MenuItem>
-                        </TextField>
                     </Paper>
                     <Paper elevation={3} style={{ margin: '10px 50px' }}>
                         <h1 align="center"> Select a method! </h1>
@@ -86,7 +87,7 @@ class CreateAudience extends React.Component {
                                 <p></p>
                             </div>
                             <div>
-                                <img src="" />
+                                <img src="" alt="" />
                             </div>
                         </div>
                     </Paper>
