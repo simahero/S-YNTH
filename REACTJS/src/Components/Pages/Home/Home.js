@@ -10,9 +10,8 @@ const Home = (props) => {
 
     return (
         <div>
-            <LoadingScreen />
         {context.isAuth &&
-            <Redirect to={{pathname:'/dashboard/campaigns'}} />
+            <Redirect to={{pathname:'/campaigns'}} />
         }
         {!context.isAuth &&
             <Redirect to={{pathname:'/login'}} />

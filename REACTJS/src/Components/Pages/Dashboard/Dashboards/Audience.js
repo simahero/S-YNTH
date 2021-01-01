@@ -23,7 +23,6 @@ class Audience extends React.Component {
     getData = () => {
         API.get('/get/audiences')
             .then(res => {
-                console.log(res)
                 this.setState({
                     loading: false,
                     data: res.data

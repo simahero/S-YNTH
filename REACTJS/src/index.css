@@ -6,10 +6,45 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Kanit', sans-serif;
-    overflow: hidden;
+    color: #121212;
+}
+
+html {
+    height: 100%;
 }
 
 a {
     color: unset;
-    text-decoration: unset;
+    text-decoration: none;
 }
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+li {
+    display: block;
+    text-align: -webkit-match-parent;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #121212;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #dddddd; 
+    border-radius: 4px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8f8f8f; 
+  }

@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import ProtectedRoute from './Components/Auth/ProtectedRoute';
 
 import AuthService from './Utils/Auth/AuthService';
 import { UserProvider } from './Components/Context/UserContext';
+import LoadingScreen from './Components/UI/LoadingScreen';
 
-import Login from './Components/Pages/Login/Login';
-import Logout from './Components/Pages/Login/Logout';
-import Edit from './Components/Pages/Edit/EditMail/Edit';
-import Dashboard from './Components/Pages/Dashboard/Dashboard';
-import Home from './Components/Pages/Home/Home';
+const Home = React.lazy( () => import('./Components/Pages/Home/Home'))
+const Login = React.lazy( () => import('./Components/Pages/Login/Login'))
+const Logout = React.lazy( () => import('./Components/Pages/Login/Logout'))
+const Edit = React.lazy( () => import('./Components/Pages/Edit/EditMail/Edit'))
+const Dashboard = React.lazy( () => import('./Components/Pages/Dashboard/Dashboard'))
 
-import CreateCampaign from './Components/Pages/Create/CreateCampaign';
-import CreateTemplate from './Components/Pages/Create/CreateTemplate';
-import CreateAudience from './Components/Pages/Create/CreateAudience';
+const CampaignAnalytics = React.lazy( () => import('./Components/Pages/SinglePages/CampaignAnalytics'))
 
-
-import './App.css';
+const CreateCampaign = React.lazy( () => import('./Components/Pages/Create/CreateCampaign'))
+const CreateTemplate = React.lazy( () => import('./Components/Pages/Create/CreateTemplate'))
+const CreateAudience = React.lazy( () => import('./Components/Pages/Create/CreateAudience'))
 
 class App extends React.Component {
 
@@ -53,28 +53,32 @@ class App extends React.Component {
     return (
       <UserProvider value={{ isAuth: isAuth, setAuth: setAuth }}>
         <Router>
-          <Switch>
+          <Suspense fallback={<LoadingScreen />}>
+            <Switch>
 
-            <Route exact path="/" render={(props) => <Home {...props} />} />
-            <Route path="/login" render={(props) => <Login {...props} />} />
-            <Route path="/logout" render={(props) => <Logout {...props} />} />
-            <Route path="/edit" render={(props) => <Edit {...props} />} />
+              <Route exact path="/" render={(props) => <Home {...props} />} />
+              <Route path="/login" render={(props) => <Login {...props} />} />
+              <Route path="/logout" render={(props) => <Logout {...props} />} />
+              <Route path="/edit" render={(props) => <Edit {...props} />} />
 
-            {/* CREATE ROUTES */}
-            <ProtectedRoute path='/create/campaign' isAuth={isAuth} Component={CreateCampaign} />
-            <ProtectedRoute path='/create/template' isAuth={isAuth} Component={CreateTemplate} />
-            <ProtectedRoute path='/create/audience' isAuth={isAuth} Component={CreateAudience} />
+              {/* CREATE ROUTES */}
+              <ProtectedRoute path='/create/campaign' Component={CreateCampaign} />
+              <ProtectedRoute path='/create/template' Component={CreateTemplate} />
+              <ProtectedRoute path='/create/audience' Component={CreateAudience} />
 
+              {/* DASHBOARD ROUTES */}
+              <ProtectedRoute path='/campaigns' Component={Dashboard} dashboard={'campaigns'} />
+              <ProtectedRoute path='/templates' Component={Dashboard} dashboard={'templates'} />
+              <ProtectedRoute path='/audience' Component={Dashboard} dashboard={'audience'} />
+              <ProtectedRoute path='/automation' Component={Dashboard} dashboard={'automation'} />
+              <ProtectedRoute path='/forms' Component={Dashboard} dashboard={'forms'} />
+              <ProtectedRoute path='/analytics' Component={Dashboard} dashboard={'analytics'} />
 
-            {/* DASHBOARD ROUTES */}
-            <ProtectedRoute path='/dashboard/campaigns' Component={Dashboard} dashboard={'campaigns'} />
-            <ProtectedRoute path='/dashboard/templates' Component={Dashboard} dashboard={'templates'} />
-            <ProtectedRoute path='/dashboard/audience' Component={Dashboard} dashboard={'audience'} />
-            <ProtectedRoute path='/dashboard/automation' Component={Dashboard} dashboard={'automation'} />
-            <ProtectedRoute path='/dashboard/forms' Component={Dashboard} dashboard={'forms'} />
-            <ProtectedRoute path='/dashboard/analytics' Component={Dashboard} dashboard={'analytics'} />
+              {/* SINGEE ROUTES */}
+              <ProtectedRoute path='/campaign/analytics' Component={CampaignAnalytics} />
 
-          </Switch>
+            </Switch>
+          </Suspense>
         </Router>
       </UserProvider>
     );

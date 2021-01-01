@@ -9,22 +9,6 @@ import { AiFillDelete } from 'react-icons/ai';
 
 const CampaignDataTable = (props) => {
 
-  const editClick = (id) => {
-
-  }
-
-  const deleteClick = (id) => {
-
-  }
-
-  const analyticsClick = (id) => {
-
-  }
-
-  const sendClick = (id) => {
-
-  }
-
   const columns = [
     { field: 'id', headerName: 'ID', flex: 2 },
     { field: 'name', headerName: 'Campaign name', flex: 2 },
@@ -32,31 +16,15 @@ const CampaignDataTable = (props) => {
     { field: 'template_id', headerName: 'Template ID' },
     { field: 'tags', headerName: 'Audience tags', flex: 2 },
     {
-      field: 'buttons', sortable: false, disableClickEventBubbling: true, headerName: 'Actions', width: 300,
+      field: 'sent', sortable: false, disableClickEventBubbling: true, headerName: 'Actions', width: 300,
       renderCell: (param) => {
-        const editClick = () => {
-          alert('editClick' + param.row.id);
-        }
-      
-        const deleteClick = () => {
-          alert('deleteClick' + param.row.id);
-        }
-      
-        const analyticsClick = () => {
-          alert('analyticsClick' + param.row.id);
-        }
-      
-        const sendClick = () => {
-          alert('sendClick' + param.row.id);
-        }
-
         return (
           <div>
-            <Button className="ActionButtons" onClick={editClick}><MdModeEdit /></Button>
-            <Button className="ActionButtons" onClick={deleteClick}><AiFillDelete /></Button>
+            <Button className="ActionButtons" onClick={() => props.editClick(param.row.id)}><MdModeEdit /></Button>
+            <Button className="ActionButtons" onClick={() => props.deleteClick(param.row.id)}><AiFillDelete /></Button>
             {param.value ?
-              <Button className="ActionButtons" onClick={sendClick}><MdSend /></Button> :
-              <Button className="ActionButtons" onClick={analyticsClick}><GrAnalytics /></Button>
+              <Button className="ActionButtons" onClick={() => props.sendClick(param.row.id)}><MdSend /></Button> :
+              <Button className="ActionButtons" onClick={() => props.analyticsClick(param.row.id)}><GrAnalytics /></Button>
             }
           </div>
         );

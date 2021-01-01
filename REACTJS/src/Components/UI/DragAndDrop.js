@@ -62,9 +62,9 @@ class DragAndDrop extends React.Component {
                 }
                 <input accept={this.props.accept} type="file" ref={this.fileUpload} style={{display: 'none'}} onChange={this.onChange} />
                 <Button onClick={this.handleUploadClick} >
-                    CLICK HERE TO IMPORT YOUR CSV
+                    <p><strong>CLICK HERE</strong> TO IMPORT YOUR CSV</p>
                 </Button>
-                <div > OR DROP HERE </div>
+                <div ><p>OR DROP HERE</p> </div>
                 {this.children}
             </div>
         )

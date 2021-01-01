@@ -10,6 +10,7 @@ const LoadingScreen = () => {
                     <span className="loader"><span className="loader-inner"></span></span>
                 </div>
             </div>
+            <h1 align="center">LOADING . . .</h1>
         </div>
     )
 }
