@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const verify = require('../../middlewares/Verification');
-const SQLPromise = require('./SQLPromise');
+const verify = require('../../Utils/Verification');
+const SQLPromise = require('../../Utils/SQLPromise');
 
 module.exports = (connection) => {
 

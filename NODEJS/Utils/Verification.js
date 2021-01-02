@@ -7,6 +7,7 @@ module.exports = function (req, res, next) {
     try {
         var decoded = jwt.decode(token, process.env.JWT_SECRET);
         req.user = decoded;
+        res.header("Access-Control-Allow-Origin", "*");
         next();
     } catch (error){
         res.status(400).send('Invalid token!');

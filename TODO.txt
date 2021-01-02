@@ -20,7 +20,7 @@
 https://jwt.io/
 https://web.postman.co/
 
-SELECT campaigns.id, campaigns.user_id, campaigns.name, campaigns.created_at, templates.content 
+SELECT campaigns.id,  templates.content 
 FROM campaigns 
 INNER JOIN templates 
 ON campaigns.template_id = templates.id
@@ -33,3 +33,30 @@ WHERE (u.id = 2)
 
 SELECT DISTINCT column1, column2, ...
 FROM table_name;
+
+
+
+#audience
+id
+
+tag
+campaign_id - tag-id
+
+1 asd
+
+get
+
+SELECT name FROM tag WHERE  campaign_id = id?
+
+put
+
+insertId = insert into ....
+tags.foreach insert id + tag id
+
+INSERT INTO tag VALUES (insertId, tag.name)
+
+
+delete 
+
+update
+
