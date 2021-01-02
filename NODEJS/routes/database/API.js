@@ -123,15 +123,11 @@ module.exports = (connection) => {
 
 	router.get('/audiences', verify, (req, res) => {
 		let user_id = req.user.user_id;
+		
 
-		connection.query('SELECT * FROM audiences WHERE user_id = ?', [user_id], (error, results) => {
-			if (error) {
-				res.status(500).send('Internal server error!');
-			} else {
-				res.header("Access-Control-Allow-Origin", "*");
-				res.send(JSON.stringify(results));
-			}
-		});
+		SQLPromise.query(connection, 'SELECT * FROM audiences WHERE user_id = ?', [user_id])
+			.then(result => res.status(200).send(result))
+			.catch(err => res.status(400).send(err))
 	})
 
 	router.get('/testaudiences', (req, res) => {
