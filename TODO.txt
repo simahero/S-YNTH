@@ -20,27 +20,16 @@
 https://jwt.io/
 https://web.postman.co/
 
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+SELECT campaigns.id, campaigns.user_id, campaigns.name, campaigns.created_at, templates.content 
+FROM campaigns 
+INNER JOIN templates 
+ON campaigns.template_id = templates.id
 
-const Home = lazy(() => import('./routes/Home'));
-const Shop = lazy(() => import('./routes/Shop'));
+DELETE c.* 
+FROM campaigns c 
+INNER JOIN users u 
+ON c.user_id = u.id 
+WHERE (u.id = 2)
 
-const App = () => {
-    return ( 
-    <Router>
-      <Suspense fallback={<div>Page is Loading...</div>}>
-        <Switch>
-          <Route exact path="/" component={Shop}/>
-          <Route path="/shop" component={Shop}/>
-        </Switch>
-      </Suspense>
-    </Router>
-  )
-
-<Redirect to={{
-            pathname: '/order',
-            state: { id: '123' }
-        }}
-/>
-this.props.location.state.id
+SELECT DISTINCT column1, column2, ...
+FROM table_name;

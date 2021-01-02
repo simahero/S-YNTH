@@ -12,7 +12,9 @@ const Logout = React.lazy( () => import('./Components/Pages/Login/Logout'))
 const Edit = React.lazy( () => import('./Components/Pages/Edit/EditMail/Edit'))
 const Dashboard = React.lazy( () => import('./Components/Pages/Dashboard/Dashboard'))
 
-const CampaignAnalytics = React.lazy( () => import('./Components/Pages/SinglePages/CampaignAnalytics'))
+const CampaignEdit = React.lazy( () => import('./Components/Pages/SinglePages/Campaign/CampaignEdit') );
+const CampaignAnalytics = React.lazy( () => import('./Components/Pages/SinglePages/Campaign/CampaignAnalytics'))
+const CampaignSend = React.lazy( () => import('./Components/Pages/SinglePages/Campaign/CampaignSend') );
 
 const CreateCampaign = React.lazy( () => import('./Components/Pages/Create/CreateCampaign'))
 const CreateTemplate = React.lazy( () => import('./Components/Pages/Create/CreateTemplate'))
@@ -74,9 +76,11 @@ class App extends React.Component {
               <ProtectedRoute path='/forms' Component={Dashboard} dashboard={'forms'} />
               <ProtectedRoute path='/analytics' Component={Dashboard} dashboard={'analytics'} />
 
-              {/* SINGEE ROUTES */}
+              {/* SINGLE ROUTES */}
+              <ProtectedRoute path='/campaign/edit' Component={CampaignEdit} />
               <ProtectedRoute path='/campaign/analytics' Component={CampaignAnalytics} />
-
+              <ProtectedRoute path='/campaign/send' Component={CampaignSend} />
+              
             </Switch>
           </Suspense>
         </Router>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 import API from '../../../../Utils/API/API';
 import Button from "@material-ui/core/Button";
 import CampaignDataTable from '../../../UI/DataTables/CampaignDataTable';
@@ -40,7 +41,7 @@ class Campaigns extends React.Component {
 
     editClick = (id) => {
         this.setState({
-            redirect: {pathname: '/edit', state: { id: id, from: this.props.location }}
+            redirect: { pathname: '/campaign/edit', state: { campaign: this.state.data[id - 1], from: this.props.location } }
         })
     }
 
@@ -59,19 +60,22 @@ class Campaigns extends React.Component {
 
     analyticsClick = (id) => {
         this.setState({
-            redirect: {pathname: '/campaign/analytics', state: { id: id, from: this.props.location }}
+            redirect: { pathname: '/campaign/analytics', state: { id: id, from: this.props.location } }
         })
     }
 
     sendClick = (id) => {
         this.setState({
-            redirect: {pathname: '/edit', state: { id: id, from: this.props.location }}
+            redirect: { pathname: '/campaign/send', state: { id: id, from: this.props.location } }
         })
     }
 
     render() {
         return (
             <div>
+                <Helmet>
+                    <title>CAMPAIGNS | S:YNTH</title>
+                </Helmet>
                 {this.state.redirect &&
                     <Redirect to={this.state.redirect} />
                 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 import API from '../../../../Utils/API/API';
 import Button from "@material-ui/core/Button";
 import TemplateDataTable from '../../../UI/DataTables/TemplateDataTable';
@@ -42,6 +43,9 @@ class Templates extends React.Component {
     render() {
         return (
             <div>
+                <Helmet>
+                    <title>TEMPLATES | S:YNTH</title>
+                </Helmet>
                 <div className="DashboardHeadingWrapper">
                     <h2 className="DashboardHeading">Templates</h2>
                     <Button className="NewTemplate" ><Link to='/create/template'><BiAddToQueue /> CREATE NEW TEMPLATE </Link></Button>

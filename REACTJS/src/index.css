@@ -26,6 +26,7 @@ p {
 li {
     display: block;
     text-align: -webkit-match-parent;
+    color: unset;
 }
 
 /* width */

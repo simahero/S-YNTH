@@ -55,10 +55,60 @@ module.exports = (connection) => {
     const importCSV = async (user_id, csv, method, tag) => {
 
         var status = {
+            deleted: 0,
             inserted: 0,
             updated: 0,
             skipped: []
         };
+
+        await Promise.all(csv.map(async element => {
+
+            if (method === 'delete') {
+                return SQLPromise.query(connection, 'SELECT * FROM audiences WHERE email = ? AND user_id = ?', [element.email, user_id])
+                .then(result => {
+                    result.forEach(elem => {
+                        return SQLPromise.query(connection, 'DELETE * FROM audiences WHERE id = ?', [elem.id])
+                        .then(deleted++).catch(skipped.push(elem));
+                    });
+                    result.forEach(elem => {
+                        return SQLPromise.query(connection, 'DELETE * FROM tags WHERE id = ?', [elem.id])
+                        .then().catch();
+                        
+                    });
+                }).catch(() => {
+                    status.skipped.push(element);
+                })
+            } else if (method === 'update'){
+                return SQLPromise.query(connection, 'SELECT * FROM audiences WHERE email = ? AND user_id = ?', [element.email, user_id])
+                .then(result => {
+                    
+                    result.forEach(elem => {
+                        return SQLPromise.query(connection, 'INSERT INTO tags (id, tag)', [elem.id, tag])
+                        .then(deleted++).catch(skipped.push(elem));
+                    });
+                }).catch(() => {
+                    status.skipped.push(element);
+                })
+            } else if (method === 'override'){
+    
+            }            
+
+        })).then(() => {
+            return status;
+        })
+
+        if (method === 'delete') {
+            return SQLPromise.query(connection, 'SELECT * FROM audiences WHERE email = ? AND user_id = ?', [element.email, user_id])
+                .then(result => {
+                    
+                }).catch(() => {
+                    status.skipped.push(element);
+                })
+        } else if (method === 'update'){
+            
+        } else if (method === 'override'){
+
+        }
 
         await Promise.all(csv.map(async element => {
 

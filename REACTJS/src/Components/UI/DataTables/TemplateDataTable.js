@@ -10,18 +10,8 @@ const TemplateDataTable = (props) => {
 
     const columns = [
         { field: 'id', headerName: 'ID', flex: 2 },
-        { field: 'email', headerName: 'E-mail address', flex: 2 },
-        { field: 'first_name', headerName: 'Firstname', type: 'date', flex: 2 },
-        { field: 'lastname', headerName: 'Lastname', flex: 2 },
-        {
-            field: 'tags', headerName: 'Tags', flex: 2, sortable: false,
-            renderCell: (param) => {
-                return (
-                    <div> {JSON.stringify(param)}
-                    </div>
-                );
-            }
-        },
+        { field: 'name', headerName: 'Name', flex: 2 },
+        { field: 'created_at', headerName: 'Created at', type: 'date', flex: 2 },   
         {
             field: 'buttons', sortable: false, disableClickEventBubbling: true, headerName: 'Actions', width: 300,
             renderCell: (param) => {
