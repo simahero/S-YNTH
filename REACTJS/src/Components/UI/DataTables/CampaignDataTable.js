@@ -45,7 +45,9 @@ const CampaignDataTable = (props) => {
   return (
     <div style={{ height: 'calc(100vh - 80px)', margin: '10px', width: 'calc(100% - 20px)', backgroundColor: '#dddddd', borderRadius: '4px', textAlign: 'center' }}>
         <DataGrid
-          
+          components={{
+            loadingOverlay: loadingOverlay,
+          }}
           onSelectionChange={(newSelection) => {
             console.log(newSelection.rowIds);
           }}

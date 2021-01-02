@@ -41,7 +41,7 @@ class Campaigns extends React.Component {
 
     editClick = (id) => {
         this.setState({
-            redirect: { pathname: '/campaign/edit', state: { campaign: this.state.data[id - 1], from: this.props.location } }
+            redirect: { pathname: '/campaign/edit', search: `?id=${this.state.data[id - 1].id}`, state: { from: this.props.location } }
         })
     }
 
@@ -60,13 +60,13 @@ class Campaigns extends React.Component {
 
     analyticsClick = (id) => {
         this.setState({
-            redirect: { pathname: '/campaign/analytics', state: { id: id, from: this.props.location } }
+            redirect: { pathname: '/campaign/analytics', search: `?id=${this.state.data[id - 1].id}`, state: { from: this.props.location } }
         })
     }
 
     sendClick = (id) => {
         this.setState({
-            redirect: { pathname: '/campaign/send', state: { id: id, from: this.props.location } }
+            redirect: { pathname: '/campaign/send', search: `?id=${this.state.data[id - 1].id}`, state: { from: this.props.location } }
         })
     }
 
