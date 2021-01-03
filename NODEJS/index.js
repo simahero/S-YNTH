@@ -6,18 +6,18 @@ const mysql = require('mysql');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 dotenv.config();
+const db = require('./models');
 
 const auth = require('./Routes/Auth/Auth')
 const api = require('./Routes/Database/API');
-
-/*
 const subscription = require('./Routes/Database/Subscription');
 const creation = require('./Routes/Database/Creation');
 const analytics = require('./Routes/Database/Track')
-*/
+
 
 const port = process.env.PORT || 3000;
 
+/*
 //SQL CONNECTION SETUP
 var connection = mysql.createConnection({
     host: process.env.SQL_HOST,
@@ -31,7 +31,7 @@ connection.connect((err) => {
     if (err) console.log(err);
     console.log("Connected!");
 });
-
+*/
 
 //NODEMAILER CONNECTION SETUP
 var transporter = nodemailer.createTransport({
@@ -59,8 +59,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //ROUTES
-app.use('/api/v1/auth', auth(connection));
-app.use('/api/v1', api(connection));
+app.use('/api/v1/auth', auth());
+app.use('/api/v1', api());
 
 /*
 app.use('/api/v1/subscription', subscription(connection));
@@ -102,6 +102,10 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../REACTJS/build/index.html'));
 });
 
+
+db.sequelize.sync()
+    .then(() => console.log('Sync done'))
+    .catch(err => console.log(err));
 
 app.listen(port, () => {
     console.log(`Server started on port: ${port}`)
