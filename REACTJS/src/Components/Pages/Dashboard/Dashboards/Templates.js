@@ -5,7 +5,6 @@ import API from '../../../../Utils/API/API';
 import Button from "@material-ui/core/Button";
 import TemplateDataTable from '../../../UI/DataTables/TemplateDataTable';
 import { BiAddToQueue } from 'react-icons/bi';
-import './Dashboard.css';
 
 
 class Templates extends React.Component {
@@ -48,9 +47,13 @@ class Templates extends React.Component {
                 </Helmet>
                 <div className="DashboardHeadingWrapper">
                     <h2 className="DashboardHeading">Templates</h2>
-                    <Button className="NewTemplate" ><Link to='/create/template'><BiAddToQueue /> CREATE NEW TEMPLATE </Link></Button>
+                    <Button className="HeadingButton" ><Link to='/create/template'><BiAddToQueue /> CREATE NEW TEMPLATE </Link></Button>
                 </div>
-                <TemplateDataTable rows={this.state.data} loading={this.state.loading} />
+                <TemplateDataTable 
+                    className="DashboardDataTable"
+                    rows={this.state.data} 
+                    loading={this.state.loading} 
+                />
             </div>
         )
     }

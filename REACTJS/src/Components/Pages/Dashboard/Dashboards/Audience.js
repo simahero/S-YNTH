@@ -5,7 +5,6 @@ import API from '../../../../Utils/API/API';
 import Button from "@material-ui/core/Button";
 import AudienceDataTable from '../../../UI/DataTables/AudienceDataTable';
 import { BiAddToQueue } from 'react-icons/bi';
-import './Dashboard.css';
 
 class Audience extends React.Component {
 
@@ -46,9 +45,13 @@ class Audience extends React.Component {
                 </Helmet>
                 <div className="DashboardHeadingWrapper">
                     <h2 className="DashboardHeading">Audience</h2>
-                    <Button className="NewAudience" ><Link to='/create/audience'><BiAddToQueue /> MANAGE AUDIENCE </Link></Button>
+                    <Button className="HeadingButton" ><Link to='/create/audience'><BiAddToQueue /> MANAGE AUDIENCE </Link></Button>
                 </div>
-                <AudienceDataTable rows={this.state.data} loading={this.state.loading} />
+                <AudienceDataTable 
+                    className="DashboardDataTable"
+                    rows={this.state.data} 
+                    loading={this.state.loading} 
+                />
             </div>
         )
     }

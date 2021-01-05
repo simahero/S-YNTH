@@ -1,11 +1,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Helmet } from "react-helmet";
-import Box from '@material-ui/core/Box';
+import { Box, TextField, Button } from '@material-ui/core';
 import AuthService from '../../../Utils/Auth/AuthService';
 import UserContext from '../../Context/UserContext'
-
-import './Login.css';
 
 class Login extends React.Component {
 
@@ -28,7 +26,7 @@ class Login extends React.Component {
             this.context.setAuth(true);
             this.setState({
                 redirect: {
-                    pathname: '/dashboard/campaigns',
+                    pathname: '/campaigns',
                     state: { from: this.props.location }
                 }
             });
@@ -53,37 +51,22 @@ class Login extends React.Component {
                         <Redirect to={this.state.redirect} />
                     }
                     <Box boxshadow={2} className="LoginFormWrapper">
-                        <form
-                            className="LoginForm"
-                        >
+                        <form className="LoginForm">
                             <h2 className="LoginHeader"> SIGN IN! </h2>
                             {this.state.error === true &&
                                 <h4 className="LoginError">
                                     Incorrect username or password!
-                        </h4>
+                                </h4>
                             }
-                            <input
-                                className="LoginInput"
-                                placeholder="Username"
-                                name="username"
-                                type="text"
-                                value={this.state.username}
-                                onChange={(e) => this.setState({ username: e.target.value })}
-                            ></input>
-                            <input
-                                className="LoginInput"
-                                placeholder="Password"
-                                name="password"
-                                type="password"
-                                value={this.statepassword}
-                                onChange={(e) => this.setState({ password: e.target.value })}
-                            ></input>
-                            <input
-                                className="LoginInput"
-                                type="submit"
-                                value="SIGN IN"
-                                onClick={(e) => this.signIn(e)}
-                            ></input>
+                            <div className="LoginInput">
+                                <TextField fullWidth color="#dddddd" label="Username" type="text" variant="outlined" value={this.state.username} onChange={(e) => this.setState({ username: e.target.value })} />
+                            </div>
+                            <div className="LoginInput">
+                                <TextField fullWidth color="#dddddd" label="Password" type="password" variant="outlined" value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} />
+                            </div>
+                            <div className="LoginInput">
+                                <Button fullWidth color="#dddddd" onClick={(e) => this.signIn(e)} > SIGN IN </Button>
+                            </div>
                         </form>
                     </Box>
                 </div>

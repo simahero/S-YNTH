@@ -1,5 +1,4 @@
 import React from 'react';
-import './Nav.css';
 
 const Nav = () => {
 
@@ -8,7 +7,7 @@ const Nav = () => {
             <nav className="Nav">
                 <div className="BrandHolder">
                     <img className="Logo" alt="logo" src="./logo512.png" />
-                    <p className="LogoBrand NavText">YNTH</p>
+                    <p className="LogoText">YNTH</p>
                 </div>
             </nav>
         </div>

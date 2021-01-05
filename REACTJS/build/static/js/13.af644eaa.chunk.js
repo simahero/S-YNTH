@@ -1,2 +1,0 @@
-(this["webpackJsonpsynth-react"]=this["webpackJsonpsynth-react"]||[]).push([[13],{217:function(t,e,c){"use strict";c.r(e);var n=c(1);c(0);e.default=function(){return Object(n.jsx)("div",{children:"createtemplate"})}}}]);
-//# sourceMappingURL=13.af644eaa.chunk.js.map

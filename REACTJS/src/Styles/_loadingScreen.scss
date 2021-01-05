@@ -1,0 +1,72 @@
+.LoaderWrapper {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #121212;
+	display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    .Loader {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        border: 4px solid #dddddd;
+        animation: Loader 2s infinite ease;
+    }
+    .LoaderInner {
+        vertical-align: top;
+        display: inline-block;
+        width: 100%;
+        background-color: #dddddd;
+        animation: LoaderInner 2s infinite ease-in;
+    }
+}
+  
+  
+@keyframes Loader {
+	0% {
+        transform: rotate(0deg);
+	}
+	
+	25% {
+	    transform: rotate(180deg);
+	}
+	
+	50% {
+	    transform: rotate(180deg);
+	}
+	
+	75% {
+	    transform: rotate(360deg);
+	}
+	
+	100% {
+	    transform: rotate(360deg);
+	}
+}
+  
+@keyframes LoaderInner {
+	0% {
+        height: 0%;
+	}
+	
+	25% {
+        height: 0%;
+	}
+	
+	50% {
+	    height: 100%;
+	}
+	
+	75% {
+	    height: 100%;
+	}
+	
+	100% {
+	    height: 0%;
+	}
+}

@@ -1,0 +1,521 @@
+.dark .LoginMain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+}
+
+.dark .LoginMain .LoginImageHolder {
+  -webkit-box-flex: 50%;
+      -ms-flex: 50%;
+          flex: 50%;
+  background: #121212;
+  background: linear-gradient(185deg, #121212 0%, #141414 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dark .LoginMain .LoginImageHolder .LoginImage {
+  max-width: 80%;
+  max-height: 80vh;
+}
+
+.dark .LoginMain .LoginBox {
+  -webkit-box-flex: 50%;
+      -ms-flex: 50%;
+          flex: 50%;
+  background-color: #121212;
+}
+
+.dark .LoginMain .LoginBox .LoginFormWrapper {
+  width: 70%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dark .LoginMain .LoginBox .LoginFormWrapper .LoginForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffffff06;
+  border-radius: 15px;
+  width: 100%;
+  height: 350px;
+}
+
+.dark .LoginMain .LoginBox .LoginFormWrapper .LoginForm .LoginHeader {
+  color: #dddddd;
+  margin-bottom: 30px;
+}
+
+.dark .LoginMain .LoginBox .LoginFormWrapper .LoginForm .LoginInput {
+  width: 80%;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.dark .LoginMain .LoginBox .LoginFormWrapper .LoginForm .LoginError {
+  background-color: #CF6679;
+  width: 80%;
+  text-align: center;
+  color: #dddddd;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 5px 0;
+}
+
+.light .LoginMain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+}
+
+.light .LoginMain .LoginImageHolder {
+  -webkit-box-flex: 50%;
+      -ms-flex: 50%;
+          flex: 50%;
+  background: #121212;
+  background: linear-gradient(185deg, #121212 0%, #141414 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.light .LoginMain .LoginImageHolder .LoginImage {
+  max-width: 80%;
+  max-height: 80vh;
+}
+
+.light .LoginMain .LoginBox {
+  -webkit-box-flex: 50%;
+      -ms-flex: 50%;
+          flex: 50%;
+  background-color: #121212;
+}
+
+.light .LoginMain .LoginBox .LoginFormWrapper {
+  width: 70%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.light .LoginMain .LoginBox .LoginFormWrapper .LoginForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ffffff06;
+  border-radius: 15px;
+  width: 100%;
+  height: 350px;
+}
+
+.light .LoginMain .LoginBox .LoginFormWrapper .LoginForm .LoginHeader {
+  color: #dddddd;
+  margin-bottom: 30px;
+}
+
+.light .LoginMain .LoginBox .LoginFormWrapper .LoginForm .LoginInput {
+  width: 80%;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.light .LoginMain .LoginBox .LoginFormWrapper .LoginForm .LoginError {
+  background-color: #CF6679;
+  width: 80%;
+  text-align: center;
+  color: #dddddd;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 5px 0;
+}
+
+.Nav {
+  height: 60px;
+  min-height: 60px;
+  background-color: #121212;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Nav .BrandHolder {
+  min-width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Nav .BrandHolder .Logo {
+  height: 35px;
+}
+
+.Nav .BrandHolder .LogoText {
+  font-weight: 600;
+  font-size: 26px;
+  color: #dddddd;
+}
+
+.LoaderWrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #121212;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 10;
+}
+
+.LoaderWrapper .Loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #dddddd;
+  -webkit-animation: Loader 2s infinite ease;
+          animation: Loader 2s infinite ease;
+}
+
+.LoaderWrapper .LoaderInner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #dddddd;
+  -webkit-animation: LoaderInner 2s infinite ease-in;
+          animation: LoaderInner 2s infinite ease-in;
+}
+
+@-webkit-keyframes Loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes Loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes LoaderInner {
+  0% {
+    height: 0%;
+  }
+  25% {
+    height: 0%;
+  }
+  50% {
+    height: 100%;
+  }
+  75% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+
+@keyframes LoaderInner {
+  0% {
+    height: 0%;
+  }
+  25% {
+    height: 0%;
+  }
+  50% {
+    height: 100%;
+  }
+  75% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+
+.DraggedOut {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+}
+
+.DraggedIn {
+  border: dashed #121212 3px;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+}
+
+.DragError {
+  color: #121212;
+  border-radius: 5px;
+  width: 90%;
+  text-align: center;
+  background-color: #CF6679;
+}
+
+.dark .Dashboard {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #121212;
+}
+
+.dark .DashboardSidebar {
+  -webkit-box-flex: 20%;
+      -ms-flex: 20%;
+          flex: 20%;
+  height: 100vh;
+  min-width: 250px;
+}
+
+.dark .Box {
+  background-color: #ffffff10;
+  border-radius: 5px;
+  color: #dddddd;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.dark .Box:hover {
+  background-color: #ffffff16;
+  cursor: pointer;
+}
+
+.dark .Box .active {
+  background-color: #ffffff24;
+}
+
+.dark .DashboardMain {
+  overflow: auto;
+  height: 100vh;
+  -webkit-box-flex: 80%;
+      -ms-flex: 80%;
+          flex: 80%;
+  background: #121212;
+  background: linear-gradient(175deg, #121212 0%, #141414 100%);
+}
+
+.dark .DashboardMain .DashboardHeadingWrapper {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 10px;
+}
+
+.dark .DashboardMain .DashboardHeadingWrapper .DashboardHeading {
+  text-align: center;
+  color: #dddddd;
+  font-size: 26px;
+  margin: auto;
+}
+
+.dark .DashboardMain .DashboardHeadingWrapper .HeadingButton {
+  background-color: #dddddd !important;
+  margin-right: 10px !important;
+  min-width: 200px !important;
+}
+
+.dark .DashboardMain .DashboardDataTable .ActionButtons {
+  min-width: 36px !important;
+}
+
+.light .Dashboard {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #dddddd;
+}
+
+.light .DashboardSidebar {
+  -webkit-box-flex: 20%;
+      -ms-flex: 20%;
+          flex: 20%;
+  height: 100vh;
+  min-width: 250px;
+}
+
+.light .Box {
+  background-color: #ffffff10;
+  border-radius: 5px;
+  color: #121212;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.light .Box:hover {
+  background-color: #00000016;
+  cursor: pointer;
+}
+
+.light .Box .active {
+  background-color: #00000024;
+}
+
+.light .DashboardMain {
+  overflow: auto;
+  height: 100vh;
+  -webkit-box-flex: 80%;
+      -ms-flex: 80%;
+          flex: 80%;
+  background: #121212;
+  background: linear-gradient(175deg, #121212 0%, #141414 100%);
+}
+/*# sourceMappingURL=styles.css.map */

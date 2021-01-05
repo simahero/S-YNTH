@@ -5,7 +5,6 @@ import API from '../../../../Utils/API/API';
 import Button from "@material-ui/core/Button";
 import CampaignDataTable from '../../../UI/DataTables/CampaignDataTable';
 import { BiAddToQueue } from 'react-icons/bi';
-import './Dashboard.css';
 
 class Campaigns extends React.Component {
 
@@ -23,8 +22,9 @@ class Campaigns extends React.Component {
     }
 
     getData = () => {
-        API.get('/get/campaigns')
+        API.get('/campaigns')
             .then(res => {
+                console.log(res)
                 this.setState({
                     loading: false,
                     data: res.data
@@ -33,10 +33,16 @@ class Campaigns extends React.Component {
             .catch(err => {
                 this.setState({
                     loading: false,
-                    data: []
+                    data: [{}]
                 });
             });
 
+    }
+
+    newClick = () => {
+        this.setState({
+            redirect: { pathname: '/campaign/edit', state: { from: this.props.location } }
+        })
     }
 
     editClick = (id) => {
@@ -81,9 +87,10 @@ class Campaigns extends React.Component {
                 }
                 <div className="DashboardHeadingWrapper">
                     <h2 className="DashboardHeading">Campaigns</h2>
-                    <Button className="NewCampaign" ><Link to='/create/campaign'><BiAddToQueue /> CREATE NEW CAMPAIGN </Link></Button>
+                    <Button className="HeadingButton" onClick={this.newClick}><BiAddToQueue /> CREATE NEW CAMPAIGN </Button>
                 </div>
                 <CampaignDataTable
+                    className="DashboardDataTable"
                     rows={this.state.data}
                     loading={this.state.loading}
                     editClick={this.editClick}

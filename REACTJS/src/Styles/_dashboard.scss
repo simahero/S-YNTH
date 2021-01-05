@@ -1,0 +1,95 @@
+@import './colorScheme';
+
+.dark {
+    .Dashboard {
+        width: 100%;
+        display: flex;
+        background-color: $d_bgcolor;
+    }
+    .DashboardSidebar {
+        flex: 20%;
+        height: 100vh;
+        min-width: 250px;
+    }
+    .Box {
+        background-color: #ffffff10;
+        border-radius: 5px;
+        color: $d_textColor;
+        text-align: center;
+        padding: 5px;
+        margin: 10px;
+        &:hover {
+            background-color: #ffffff16;
+            cursor: pointer;
+        }
+        .active {
+            background-color: #ffffff24;
+        }
+    }
+    .DashboardMain {
+        overflow: auto;
+        height: 100vh;
+        flex: 80%;
+        background: rgb(18,18,18);
+        background: linear-gradient(175deg, rgba(18,18,18,1) 0%, rgba(20,20,20,1) 100%);
+        .DashboardHeadingWrapper {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            .DashboardHeading {
+                text-align: center;
+                color: #dddddd;
+                font-size: 26px;
+                margin: auto;
+            }
+            .HeadingButton {
+                background-color: #dddddd !important;
+                margin-right: 10px !important;
+                min-width: 200px !important;
+            }
+        }
+        .DashboardDataTable{
+            .ActionButtons {
+                min-width: 36px !important;
+            }
+        }
+    }
+}
+
+
+.light {
+    .Dashboard {
+        width: 100%;
+        display: flex;
+        background-color: $l_bgcolor;
+    }
+    .DashboardSidebar {
+        flex: 20%;
+        height: 100vh;
+        min-width: 250px;
+    }
+    .Box {
+        background-color: #ffffff10;
+        border-radius: 5px;
+        color: $l_textcolor;
+        text-align: center;
+        padding: 5px;
+        margin: 10px;
+        &:hover {
+            background-color: #00000016;
+            cursor: pointer;
+        }
+        .active {
+            background-color: #00000024;
+        }
+    }
+    .DashboardMain {
+        overflow: auto;
+        height: 100vh;
+        flex: 80%;
+        background: rgb(18,18,18);
+        background: linear-gradient(175deg, rgba(18,18,18,1) 0%, rgba(20,20,20,1) 100%);
+    }
+}

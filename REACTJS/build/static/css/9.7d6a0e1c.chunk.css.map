@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/Components/Pages/Create/CreateCampaign.css"],"names":[],"mappings":"AAAA,gBACI,wBAAyB,CACzB,gBACJ","file":"9.7d6a0e1c.chunk.css","sourcesContent":[".CreateCampaign {\r\n    background-color: #121212;\r\n    min-height: 100vh;\r\n}"]}

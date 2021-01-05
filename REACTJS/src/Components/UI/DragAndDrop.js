@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import './DragAndDrop.css';
 
 class DragAndDrop extends React.Component {
 

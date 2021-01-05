@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
-import './Dashboard.css';
 
 const Forms = () => {
     return (

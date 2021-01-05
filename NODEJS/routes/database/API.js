@@ -78,7 +78,7 @@ module.exports = (connection) => {
 				.catch(err => res.status(400).send(err));
 		} else {
 			SQLPromise.query(connection, 'SELECT * FROM templates WHERE user_id = ?', [user_id])
-				.then(result => res.status(200).send(result))
+				.then(result => res.status(200).send(JSON.stringify(result)))
 				.catch(err => res.status(400).send(err))
 		}
 	})
@@ -110,6 +110,24 @@ module.exports = (connection) => {
 			.catch(err => res.status(400).send(err))
 	})
 
+	//TAGS
+
+	/*
+		audience_id
+		name
+	*/
+
+	router.get('/tags', verify, (req, res) => {
+		let user_id = req.user.user_id;
+		let audience_id = req.query.id;
+
+		SQLPromise.query(connection, 'SELECT DISTINCT tag FROM tags WHERE user_id = ?', [user_id])
+			.then(result => res.status(200).send(result))
+			.catch(err => res.status(400).send(err))
+
+
+	})
+
 	//AUDIENCES
 
 	/*
@@ -123,7 +141,6 @@ module.exports = (connection) => {
 
 	router.get('/audiences', verify, (req, res) => {
 		let user_id = req.user.user_id;
-		
 
 		SQLPromise.query(connection, 'SELECT * FROM audiences WHERE user_id = ?', [user_id])
 			.then(result => res.status(200).send(result))

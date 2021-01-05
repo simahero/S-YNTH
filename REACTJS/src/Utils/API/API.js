@@ -27,6 +27,17 @@ class API {
         })
     }
 
+    put(path, body) {
+        return new Promise((resolve, reject) => {
+            axios.put(API_URL + path, body, { headers: authHeader()})
+                .then(res => {
+                    resolve(res);
+                }).catch(err => {
+                    reject(err);
+                })
+        })
+    }
+
     delete(path, body) {
         return new Promise((resolve, reject) => {
             axios.delete(API_URL + path, body, { headers: authHeader()})

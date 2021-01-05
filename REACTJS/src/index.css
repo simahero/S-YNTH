@@ -30,21 +30,21 @@ li {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 15px;
-  }
+  width: 15px;
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background-color: #121212;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #121212;
+}
    
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #dddddd; 
-    border-radius: 4px;
-  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dddddd; 
+  border-radius: 4px;
+}
   
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #8f8f8f; 
-  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8f8f8f; 
+}
