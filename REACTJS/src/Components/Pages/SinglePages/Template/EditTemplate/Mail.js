@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 
-import MailContext from '../../../Context/MailContext';
+import MailContext from '../../../../Context/MailContext';
 
 import Header from './Blocks/Header';
 import Image from './Blocks/Image';
@@ -9,7 +9,7 @@ import SocialShare from './Blocks/SocialShare';
 
 
 
-const Mail = (props) => {
+const Mail = () => {
 
     const context = useContext(MailContext);
 

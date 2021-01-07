@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import MailContext from '../../../../Context/MailContext';
+import MailContext from '../../../../../Context/MailContext';
 
 const Image = (props) => {
 

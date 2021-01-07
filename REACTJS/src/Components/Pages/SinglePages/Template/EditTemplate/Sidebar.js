@@ -1,6 +1,5 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import './Sidebar.css';
 
 import DefultOptions from './Blocks/DefaultOptions';
 
@@ -9,14 +8,12 @@ import ImageOptions from './BlockOptions/ImageOptions';
 import ParagraphOptions from './BlockOptions/ParagraphOptions';
 import SocialShareOptions from './BlockOptions/SocialShareOptions';
 
-import MailContext from '../../../Context/MailContext';
+import MailContext from '../../../../Context/MailContext';
 import DefaultOptions from './Blocks/DefaultOptions';
 
 class Sidebar extends React.Component {
 
     static contextType = MailContext;
-    //this.context.handler()
-    //this.context.state;
 
     constructor(props) {
         super(props);
@@ -44,27 +41,27 @@ class Sidebar extends React.Component {
                     <Box className="EditBox" boxShadow={3} onClick={() => this.context.handler({ sideBarTab: 'blocks' })}>BLOCKS</Box>
                     <Box className="EditBox" boxShadow={3} onClick={() => this.context.handler({ sideBarTab: 'options' })}>OPTIONS</Box>
                 </div>
-                {this.content.state.sideBarTab === 'blocks' &&
+                {this.context.state.sideBarTab === 'blocks' &&
                     <div className="EditBlocks">
                         <ul>
                             <li
-                                onClick={() => { this.context.handler({blocks: [...this.content.state.blocks, DefultOptions.header]}) }}
+                                onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefultOptions.header]}) }}
                             ><Box className="EditBox" boxShadow={3}>Header</Box></li>
                             <li
-                                onClick={() => { this.context.handler({blocks: [...this.content.state.blocks, DefaultOptions.parahraph]}) }}
+                                onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefaultOptions.parahraph]}) }}
                             ><Box className="EditBox" boxShadow={3}>Paragraph</Box></li>
                             <li
-                                onClick={() => { this.context.handler({blocks: [...this.content.state.blocks, DefaultOptions.image]}) }}
+                                onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefaultOptions.image]}) }}
                             ><Box className="EditBox" boxShadow={3}>Image</Box></li>
                             <li
-                                onClick={() => { this.context.handler({blocks: [...this.content.state.blocks, DefaultOptions.socialshare]}) }}
+                                onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefaultOptions.socialshare]}) }}
                             ><Box className="EditBox" boxShadow={3}>SocialShare</Box></li>
                         </ul>
                     </div>
                 }
-                {this.content.state.sideBarTab === 'options' &&
+                {this.context.state.sideBarTab === 'options' &&
                     <div className="EditOptions">
-                        {this.renderOptions(this.content.state.sideBarOptions)}
+                        {this.renderOptions(this.context.state.sideBarOptions)}
                     </div>
                 }
             </div>

@@ -12,7 +12,7 @@ import './Styles/styles.css';
 const Home = React.lazy(() => import('./Components/Pages/Home/Home'))
 const Login = React.lazy(() => import('./Components/Pages/Login/Login'))
 const Logout = React.lazy(() => import('./Components/Pages/Login/Logout'))
-const Edit = React.lazy(() => import('./Components/Pages/Edit/EditMail/Edit'))
+const Edit = React.lazy(() => import('./Components/Pages/SinglePages/Template/EditTemplate/Edit'))
 const Dashboard = React.lazy(() => import('./Components/Pages/Dashboard/Dashboard'))
 
 const CampaignEdit = React.lazy(() => import('./Components/Pages/SinglePages/Campaign/CampaignEdit'));
@@ -92,7 +92,6 @@ class App extends React.Component {
                   <Route exact path="/" render={(props) => <Home {...props} />} />
                   <Route path="/login" render={(props) => <Login {...props} />} />
                   <Route path="/logout" render={(props) => <Logout {...props} />} />
-                  <Route path="/edit" render={(props) => <Edit {...props} />} />
 
                   {/* DASHBOARD ROUTES */}
                   <ProtectedRoute path='/campaigns' Component={Dashboard} dashboard={'campaigns'} />
@@ -106,6 +105,8 @@ class App extends React.Component {
                   <ProtectedRoute path='/campaign/edit' Component={CampaignEdit} />
                   <ProtectedRoute path='/campaign/analytics' Component={CampaignAnalytics} />
                   <ProtectedRoute path='/campaign/send' Component={CampaignSend} />
+
+                  <ProtectedRoute path='/template/edit' Component={Edit} />
 
                 </Switch>
               </Suspense>
