@@ -3,7 +3,7 @@
 .dark {
     .MainHolder {
         background-color: #121212;
-        padding: 20px;
+        padding: 5px 20px;
         min-height: calc(100vh - 60px);
         min-width: calc(100% - 20px);
         margin: auto;
@@ -11,13 +11,17 @@
         justify-content: center;
         align-items: flex-start;
         .Paper {
-            min-height: calc(100vh - 100px);
+            min-height: calc(100vh - 80px);
             width: 100%;
             display: flex;
             padding: 20px;
+            background-color: #ffffff16 !important;
             .PaperInner {
+                color: #dddddd !important;
                 flex: 40%;
                 padding: 10px;
+                display: flex;
+                flex-direction: column;
                 .PaperInnerHeading {
                     margin-bottom: 20px;
                     margin-top: 10px;
@@ -27,6 +31,9 @@
                 flex: 60%;
                 padding: 10px;
                 border-left: 1px solid rgba(0, 0, 0, 0.23);
+                #preview_table {
+                    box-shadow: 5px 5px 20px #00000010;
+                }
             }
             .ChipHolder {
                 display: flex;

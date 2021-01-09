@@ -15,10 +15,6 @@ class Sidebar extends React.Component {
 
     static contextType = MailContext;
 
-    constructor(props) {
-        super(props);
-    }
-
     renderOptions = (param) => {
         switch (param) {
             case 'Header':

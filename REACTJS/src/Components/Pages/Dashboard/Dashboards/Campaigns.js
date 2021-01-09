@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 import API from '../../../../Utils/API/API';
 import Button from "@material-ui/core/Button";
@@ -24,7 +24,6 @@ class Campaigns extends React.Component {
     getData = () => {
         API.get('/campaigns')
             .then(res => {
-                console.log(res)
                 this.setState({
                     loading: false,
                     data: res.data

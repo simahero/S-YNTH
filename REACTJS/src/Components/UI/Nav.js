@@ -1,20 +1,71 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import ThemeContext from '../Context/ThemeContext';
+import { Paper, Switch } from '@material-ui/core'
 import { Link } from 'react-router-dom';
+import { RiSettings6Line } from 'react-icons/ri'
 
-const Nav = () => {
+class Nav extends React.Component {
 
-    return (
-        <div>
-            <nav className="Nav">
-                <Link to="/">
-                <div className="BrandHolder">
-                    <img className="Logo" alt="logo" src="./logo512.png" />
-                    <p className="LogoText">YNTH</p>
-                </div>
-                </Link>
-            </nav>
-        </div>
-    )
+    static contextType = ThemeContext
+
+    constructor(props){
+        super(props)
+        this.state = {
+            open: false
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('click', this.handleClickOutside, true);
+    }
+    
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClickOutside, true);
+    }
+
+    toggleOpen = () => {
+        this.setState({open: !this.state.open})
+    }
+
+    handleClickOutside(event) {
+        const domNode = ReactDOM.findDOMNode(this);
+
+        if (!domNode || !domNode.contains(event.target)) {
+        this.setState({
+            open: false
+        });
+    }
+    }
+
+    render() {
+        return (
+            <div>
+                <nav className="Nav">
+                    <Link to="/">
+                        <div className="BrandHolder">
+                            <img className="Logo" alt="logo" src="./logo512.png" />
+                            <p className="LogoText">YNTH</p>
+                        </div>
+                    </Link>
+                    <div className="DropDownButton" onClick={this.toggleOpen}>
+                        <RiSettings6Line />
+                    </div>
+                    {this.state.open &&
+                        <Paper className="DropDownMenu">
+                            <h3 align="center"> SETTINGS </h3>
+                            <Switch
+                                checked={this.context.theme === 'dark' ? true : false}
+                                onChange={this.context.toggleTheme}
+                                color="primary"
+                            />
+                        </Paper>
+                    }
+                </nav>
+            </div>
+        )
+    }
+
 }
 
 export default Nav;

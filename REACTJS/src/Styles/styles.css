@@ -233,6 +233,40 @@
   color: #dddddd;
 }
 
+.Nav .DropDownButton {
+  margin-left: auto;
+  margin-right: 20px;
+  width: 35px;
+  height: 35px;
+  background-color: #ffffff18;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Nav .DropDownButton:hover {
+  background-color: #ffffff24;
+  cursor: pointer;
+}
+
+.Nav .DropDownMenu {
+  position: absolute;
+  z-index: 30;
+  top: 58px;
+  right: 20px;
+  width: 300px;
+  background-color: #121212;
+  color: #dddddd;
+  padding: 10px;
+}
+
 .LoaderWrapper {
   width: 100%;
   height: 100%;
@@ -430,8 +464,17 @@
   cursor: pointer;
 }
 
-.dark .Box .active {
+.dark .BoxActive {
   background-color: #ffffff24;
+  border-radius: 5px;
+  color: #dddddd;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.dark .BoxActive:hover {
+  cursor: pointer;
 }
 
 .dark .DashboardMain {
@@ -521,7 +564,7 @@
 
 .dark .MainHolder {
   background-color: #121212;
-  padding: 20px;
+  padding: 5px 20px;
   min-height: calc(100vh - 60px);
   min-width: calc(100% - 20px);
   margin: auto;
@@ -537,19 +580,28 @@
 }
 
 .dark .MainHolder .Paper {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 80px);
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 20px;
+  background-color: #ffffff16 !important;
 }
 
 .dark .MainHolder .Paper .PaperInner {
+  color: #dddddd !important;
   -webkit-box-flex: 40%;
       -ms-flex: 40%;
           flex: 40%;
   padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .dark .MainHolder .Paper .PaperInner .PaperInnerHeading {
@@ -563,6 +615,11 @@
           flex: 60%;
   padding: 10px;
   border-left: 1px solid rgba(0, 0, 0, 0.23);
+}
+
+.dark .MainHolder .Paper .Preview #preview_table {
+  -webkit-box-shadow: 5px 5px 20px #00000010;
+          box-shadow: 5px 5px 20px #00000010;
 }
 
 .dark .MainHolder .Paper .ChipHolder {

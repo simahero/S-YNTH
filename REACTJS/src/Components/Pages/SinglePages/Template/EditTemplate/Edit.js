@@ -14,8 +14,7 @@ class Edit extends React.Component {
             loading: true,
             sideBarTab: 'blocks',
             currentIndex: 0,
-            sideBarOptions: '',
-            html: ''
+            sideBarOptions: ''
         };
         this.handler = this.handler.bind(this)
     }

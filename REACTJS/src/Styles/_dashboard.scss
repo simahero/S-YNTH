@@ -22,8 +22,16 @@
             background-color: #ffffff16;
             cursor: pointer;
         }
-        .active {
-            background-color: #ffffff24;
+    }
+    .BoxActive {
+        background-color: #ffffff24;
+        border-radius: 5px;
+        color: $d_textColor;
+        text-align: center;
+        padding: 5px;
+        margin: 10px;
+        &:hover {
+            cursor: pointer;
         }
     }
     .DashboardMain {

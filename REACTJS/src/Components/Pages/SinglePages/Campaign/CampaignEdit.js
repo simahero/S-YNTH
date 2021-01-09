@@ -5,13 +5,15 @@ import DoneIcon from '@material-ui/icons/Done';
 import API from '../../../../Utils/API/API'
 import Nav from '../../../UI/Nav';
 import LoadingScreen from '../../../UI/LoadingScreen';
-
+import PreviewTable from '../Template/PreviewTemplate';
+import { MailProvider } from '../../../Context/MailContext';
 
 class CampaignEdit extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
+            loading: false,
             campaign: {
                 name: '',
                 template_id: -1,
@@ -21,49 +23,56 @@ class CampaignEdit extends React.Component {
             tags: [],
             templates: [],
             audience_count: 0,
-            current_template: ''
+            current_template: {
+                id: -1,
+                name: '',
+                content: null
+            }
         }
-        this.init();
     }
 
     useQuery = () => {
         return new URLSearchParams(this.props.location.search);
     }
 
-    init = () => {
+    componentDidMount() {
         if (this.useQuery().get('id')) {
             API.get(`/campaigns?id=${this.useQuery().get('id')}`)
                 .then(res => {
                     let tmp = res.data[0]
                     tmp.tags = JSON.parse(res.data[0].tags)
-                    this.setState({ campaign: tmp })
+                    this.setState({ campaign: tmp }, () => {
+                        API.get('/templates')
+                            .then(res => {
+                                console.log(res.data)
+                                this.setState({ templates: res.data, current_template: res.data[this.state.campaign.template_id] })
+                            })
+                            .catch(err => console.log(err))
+                    })
                 }).then(() => {
-                    API.get('/templates')
+                    API.get('/tags')
                         .then(res => {
-                            this.setState({ templates: res.data, current_template: res.data[this.state.campaign.template_id] })
+                            let tags = []
+                            res.data.forEach(tag => {
+                                if (this.state.campaign.tags.includes(tag.tag)) return
+                                tags.push(tag.tag)
+                            });
+                            this.setState({ tags: tags })
                         })
                         .catch(err => console.log(err))
                 })
                 .catch(err => console.log(err))
-
         }
-
-        API.get('/tags')
-            .then(res => {
-                let tags = []
-                res.data.forEach(tag => {
-                    tags.push(tag.tag)
-                });
-                this.setState({ tags: tags })
-            })
-            .catch(err => console.log(err))
     }
 
+    handleSelectChange = (e) => {
+        this.setState({ current_template: this.state.templates.find(obj => { return obj.id === e.target.value }) })
+    }
 
     getAudienceCount = () => {
-        API.get(`/audience_count?tags=${this.state.campaign.tags.toString()}`)
+        API.get(`/audience_count?tags=${JSON.stringify(this.state.campaign.tags)}`)
             .then(res => {
-                this.setState({ audience_count: res.data })
+                this.setState({ audience_count: res.data[0].count })
             })
             .catch(err => console.log(err))
     }
@@ -75,7 +84,9 @@ class CampaignEdit extends React.Component {
         c_tags.splice(index, 1)
         let tmp = this.state.campaign
         tmp.tags = c_tags
-        this.setState({ campaign: tmp, tags: a_tags })
+        this.setState({ campaign: tmp, tags: a_tags }, () => {
+            this.getAudienceCount()
+        })
     }
 
     handleAdd = (index) => {
@@ -85,7 +96,9 @@ class CampaignEdit extends React.Component {
         a_tags.splice(index, 1)
         let tmp = this.state.campaign
         tmp.tags = c_tags
-        this.setState({ campaign: tmp, tags: a_tags })
+        this.setState({ campaign: tmp, tags: a_tags }, () => {
+            this.getAudienceCount()
+        })
     }
 
     onSave = () => {
@@ -101,9 +114,12 @@ class CampaignEdit extends React.Component {
     }
 
     render() {
+
+        let { loading, campaign, tags, templates, audience_count, current_template } = this.state
+
         return (
             <Fragment>
-                {this.state.loading &&
+                {loading &&
                     <LoadingScreen />
                 }
                 <Helmet>
@@ -114,40 +130,47 @@ class CampaignEdit extends React.Component {
                     <Paper className="Paper" elevation={3} >
                         <form className="PaperInner">
                             <h3 className="PaperInnerHeading">Campaign settings</h3>
-                            <TextField fullWidth label="Campaign name" type="text" variant="outlined" value={this.state.campaign.name} onChange={(e) => this.setState({ username: e.target.value })} />
+                            <TextField fullWidth label="Campaign name" type="text" variant="outlined" value={campaign.name} onChange={(e) => this.setState({ username: e.target.value })} />
                             <h3 className="PaperInnerHeading">Audience settings</h3>
                             <div className="ChipHolder">
                                 <div className="ChipRow">
-                                    {this.state.campaign.tags.map((e, i) => {
+                                    {campaign.tags.map((e, i) => {
                                         return <Chip onDelete={() => this.handleDelete(i)} label={e} />
                                     })
                                     }
                                 </div>
                                 <div className="ChipRow">
-                                    {this.state.tags.map((e, i) => {
+                                    {tags.map((e, i) => {
                                         return <Chip deleteIcon={<DoneIcon />} onDelete={() => this.handleAdd(i)} label={e} />
                                     })
                                     }
                                 </div>
-                                <p>Total contacts: <strong>{this.state.audience_count}</strong></p>
+                                <p>Total contacts: <strong>{audience_count}</strong></p>
                             </div>
                             <h3 className="PaperInnerHeading">Template settings</h3>
                             <div className="TemplateHolder">
                                 <Select
-                                    value={this.state.current_template.name}
-
+                                    onChange={this.handleSelectChange}
+                                    value={campaign.template_id ? campaign.template_id : ''}
+                                    
                                 >
-                                    {this.state.templates.map((e, i) => {
-                                        return <MenuItem value={e.name}>{e.name}</MenuItem>
+                                    {templates.map((e, i) => {
+                                        return <MenuItem value={e.id}>{e.name}</MenuItem>
                                     })
                                     }
                                 </Select>
                             </div>
                             <div className="SaveButtonHolder">
+                                <Button onClick={this.onSave}> EDIT TEMPLATE </Button>
                                 <Button onClick={this.onSave}> SAVE </Button>
                             </div>
                         </form>
                         <div className="Preview">
+                            {current_template.content &&
+                                <MailProvider value={{ state: { blocks: JSON.parse(current_template.content) } }}>
+                                    <PreviewTable />
+                                </MailProvider>
+                            }
 
                         </div>
                     </Paper>

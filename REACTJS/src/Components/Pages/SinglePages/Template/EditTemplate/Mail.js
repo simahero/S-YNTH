@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext } from 'react';
 
 import MailContext from '../../../../Context/MailContext';
 
@@ -13,10 +13,8 @@ const Mail = () => {
 
     const context = useContext(MailContext);
 
-    const[style, setStyle] = useState({maxWidth: "600", margin: "auto", backgroundColor: "white", height: "850"});
-
     return (
-        <table id="mail" width="600" style={style}>
+        <table width="600" style={{maxWidth: "600", margin: "auto", backgroundColor: "white", height: "850"}}>
                 <tbody>
                     {context.state.blocks.map((block, index) => {
                         switch (block.tag){
@@ -28,6 +26,8 @@ const Mail = () => {
                                 return <Paragraph index={index} />;
                             case 'SocialShare':
                                 return <SocialShare index={index} />;
+                            default:
+                                return false
                             }
                         })
                     }
