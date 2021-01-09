@@ -128,6 +128,19 @@ module.exports = (connection) => {
 
 	})
 
+	router.get('/audience_count', verify, (req, res) => {
+		let user_id = req.user.user_id;
+		let selected_tags = JSON.parse(req.query.tags);
+		if (selected_tags.length === 0) return res.status(200).send([{count: 0}]);
+
+
+		SQLPromise.query(connection, 'SELECT COUNT(tag) as count FROM tags WHERE user_id = ? AND tag IN (?)', [user_id, selected_tags])
+			.then(result => res.status(200).send(result))
+			.catch(err => res.status(400).send(err))
+
+
+	})
+
 	//AUDIENCES
 
 	/*
