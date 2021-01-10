@@ -6,7 +6,7 @@ const Header = (props) => {
 
     const context = useContext(MailContext);
     const options = context.state.blocks[props.index].options;
-    console.log(options)
+
     const setSidebarOptions = (index) => {
         if (context.handler){
             context.handler({

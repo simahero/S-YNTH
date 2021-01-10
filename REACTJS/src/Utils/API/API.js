@@ -40,7 +40,7 @@ class API {
 
     delete(path, body) {
         return new Promise((resolve, reject) => {
-            axios.delete(API_URL + path, body, { headers: authHeader()})
+            axios.delete(API_URL + path, { headers: authHeader(), data: body})
                 .then(res => {
                     resolve(res);
                 }).catch(err => {

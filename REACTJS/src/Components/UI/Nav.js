@@ -16,26 +16,8 @@ class Nav extends React.Component {
         }
     }
 
-    componentDidMount() {
-        document.addEventListener('click', this.handleClickOutside, true);
-    }
-    
-    componentWillUnmount() {
-        document.removeEventListener('click', this.handleClickOutside, true);
-    }
-
     toggleOpen = () => {
         this.setState({open: !this.state.open})
-    }
-
-    handleClickOutside(event) {
-        const domNode = ReactDOM.findDOMNode(this);
-
-        if (!domNode || !domNode.contains(event.target)) {
-        this.setState({
-            open: false
-        });
-    }
     }
 
     render() {
@@ -44,7 +26,7 @@ class Nav extends React.Component {
                 <nav className="Nav">
                     <Link to="/">
                         <div className="BrandHolder">
-                            <img className="Logo" alt="logo" src="./logo512.png" />
+                            <img className="Logo" alt="logo" src={this.context.theme == 'dark' ? './assets/images/llogo.png' : './assets/images/dlogo.png'} />
                             <p className="LogoText">YNTH</p>
                         </div>
                     </Link>

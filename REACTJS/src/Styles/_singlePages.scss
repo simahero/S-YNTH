@@ -1,8 +1,8 @@
+@import './colorScheme';
 
-
-.dark {
+.dark{
     .MainHolder {
-        background-color: #121212;
+        background-color: $d_bgcolor;
         padding: 5px 20px;
         min-height: calc(100vh - 60px);
         min-width: calc(100% - 20px);
@@ -17,7 +17,87 @@
             padding: 20px;
             background-color: #ffffff16 !important;
             .PaperInner {
-                color: #dddddd !important;
+                color: $d_textColor !important;
+                flex: 40%;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                .PaperInnerHeading {
+                    margin-bottom: 20px;
+                    margin-top: 10px;
+                }
+            }
+            .Preview{
+                flex: 60%;
+                padding: 10px;
+                border-left: 1px solid rgba(0, 0, 0, 0.23);
+                #preview_table {
+                    box-shadow: 5px 5px 20px #00000010;
+                }
+            }
+            .ChipHolder {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .ChipRow {
+                    padding: 10px;
+                    border-radius: 4px;
+                    margin: 5px 0px;
+                    border: 1px solid rgba(0, 0, 0, 0.23);
+                    width: 100%;                   
+                    .MuiChip-root {
+                        margin: 2px;
+                    }
+                }
+            }
+            .TemplateHolder {
+                .MuiInput-input {
+                    padding: 10px;
+                }
+                .MuiInputBase-root {
+                    width: 100%;
+                    border: 1px solid rgba(0, 0, 0, 0.23);
+                    border-radius: 4px;
+                    &::before {
+                        content: none;
+                    }
+                }
+                .MuiButtonBase-root {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .MuiButton-root {
+                        border: 1px solid;
+                    }
+                }
+            }
+            .SaveButtonHolder {
+                margin-left: auto;
+                margin-top: auto;
+            }
+        }
+    }
+}
+
+.light{
+    .MainHolder {
+        background-color: $l_bgcolor;
+        padding: 5px 20px;
+        min-height: calc(100vh - 60px);
+        min-width: calc(100% - 20px);
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        .Paper {
+            min-height: calc(100vh - 80px);
+            width: 100%;
+            display: flex;
+            padding: 20px;
+            background-color: #ffffff16 !important;
+            .PaperInner {
+                color: $l_textColor !important;
                 flex: 40%;
                 padding: 10px;
                 display: flex;

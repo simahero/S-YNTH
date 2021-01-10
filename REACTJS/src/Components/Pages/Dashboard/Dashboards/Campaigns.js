@@ -70,9 +70,18 @@ class Campaigns extends React.Component {
     }
 
     sendClick = (id) => {
-        this.setState({
-            redirect: { pathname: '/campaign/send', search: `?id=${this.state.data[id - 1].id}`, state: { from: this.props.location } }
-        })
+        if (window.confirm('Are you sure you want to send out this campaign?')) {
+            API.delete('/campaigns', { id: id }).then(() => {
+                this.setState(prevState => {
+                    let tmp = Object.assign({}, prevState)
+                    tmp.data.splice(id, 1)
+                    return tmp
+                })
+            })
+                .catch((err) => {
+                    alert(err);
+                });
+        }
     }
 
     render() {

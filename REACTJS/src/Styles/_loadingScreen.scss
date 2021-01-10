@@ -1,31 +1,78 @@
-.LoaderWrapper {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background-color: #121212;
-	display:flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    .Loader {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        position: relative;
-        border: 4px solid #dddddd;
-        animation: Loader 2s infinite ease;
-    }
-    .LoaderInner {
-        vertical-align: top;
-        display: inline-block;
-        width: 100%;
-        background-color: #dddddd;
-        animation: LoaderInner 2s infinite ease-in;
-    }
+@import './colorScheme';
+
+.dark {
+	.LoaderWrapper {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: $d_bgcolor;
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 10;
+		.LoaderTitle {
+			color: $d_textColor;
+			font-weight: 500;
+			margin-top: 20px;
+			text-transform: capitalize;
+		}
+		.Loader {
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			position: relative;
+			border: 4px solid $d_textColor;
+			animation: Loader 2s infinite ease;
+		}
+		.LoaderInner {
+			vertical-align: top;
+			display: inline-block;
+			width: 100%;
+			background-color: $d_textColor;
+			animation: LoaderInner 2s infinite ease-in;
+		}
+	}
 }
-  
+
+.light {
+	.LoaderWrapper {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: $l_bgcolor;
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		z-index: 10;
+		.LoaderTitle {
+			color: $l_textColor;
+			font-weight: 500;
+			margin-top: 20px;
+			text-transform: capitalize;
+		}
+		.Loader {
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			position: relative;
+			border: 4px solid $l_textColor;
+			animation: Loader 2s infinite ease;
+		}
+		.LoaderInner {
+			vertical-align: top;
+			display: inline-block;
+			width: 100%;
+			background-color: $l_textColor;
+			animation: LoaderInner 2s infinite ease-in;
+		}
+	}
+}
   
 @keyframes Loader {
 	0% {

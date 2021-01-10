@@ -13,20 +13,18 @@ class CampaignEdit extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            loading: false,
-            campaign: {
-                name: '',
-                template_id: -1,
-                tags: [],
-                settings: null
-            },
-            tags: [],
-            templates: [],
+            loading: true,
             audience_count: 0,
-            current_template: {
-                id: -1,
-                name: '',
-                content: null
+            data: {
+                campaign: {
+                    name: '',
+                    template_id: -1,
+                    tags: [],
+                    settings: null
+                },
+                templates: [],
+                tags: [],
+                template_content: []
             }
         }
     }
@@ -36,68 +34,58 @@ class CampaignEdit extends React.Component {
     }
 
     componentDidMount() {
-        if (this.useQuery().get('id')) {
-            API.get(`/campaigns?id=${this.useQuery().get('id')}`)
-                .then(res => {
-                    let tmp = res.data[0]
-                    tmp.tags = JSON.parse(res.data[0].tags)
-                    this.setState({ campaign: tmp }, () => {
-                        API.get('/templates')
-                            .then(res => {
-                                console.log(res.data)
-                                this.setState({ templates: res.data, current_template: res.data[this.state.campaign.template_id] })
-                            })
-                            .catch(err => console.log(err))
-                    })
-                }).then(() => {
-                    API.get('/tags')
-                        .then(res => {
-                            let tags = []
-                            res.data.forEach(tag => {
-                                if (this.state.campaign.tags.includes(tag.tag)) return
-                                tags.push(tag.tag)
-                            });
-                            this.setState({ tags: tags })
-                        })
-                        .catch(err => console.log(err))
-                })
-                .catch(err => console.log(err))
-        }
+        API.get(`/campaigns/edit?id=${this.useQuery().get('id')}`)
+            .then(res => {
+                this.setState({ data: res.data, loading: false }, () => this.getAudienceCount())
+            })
+            .catch(err => console.log(err))
+
     }
 
     handleSelectChange = (e) => {
-        this.setState({ current_template: this.state.templates.find(obj => { return obj.id === e.target.value }) })
+        API.get(`/templates?id=${e.target.value}&content=1`)
+            .then(res => {
+                this.setState(prevState => ({
+                    ...prevState,
+                    data: {
+                        ...prevState.data,
+                        campaign: {
+                            ...prevState.data.campaign,
+                            template_id: e.target.value
+                        },
+                        template_content: res.data
+
+                    }
+                }))
+            })
+            .catch(err => console.log(err))
     }
 
     getAudienceCount = () => {
-        API.get(`/audience_count?tags=${JSON.stringify(this.state.campaign.tags)}`)
+        API.get(`/audience_count?tags=${JSON.stringify(this.state.data.campaign.tags)}`)
             .then(res => {
-                this.setState({ audience_count: res.data[0].count })
+                this.setState({audience_count: res.data[0].count})
             })
             .catch(err => console.log(err))
     }
 
     handleDelete = (index) => {
-        let c_tags = Array.from(this.state.campaign.tags)
-        let a_tags = Array.from(this.state.tags)
-        a_tags.push(c_tags[index])
-        c_tags.splice(index, 1)
-        let tmp = this.state.campaign
-        tmp.tags = c_tags
-        this.setState({ campaign: tmp, tags: a_tags }, () => {
+        this.setState(prevState => {
+            let data = Object.assign({}, prevState.data)
+            data.tags.push(data.campaign.tags[index])
+            data.campaign.tags.splice(index, 1);
             this.getAudienceCount()
+            return {data}  
         })
     }
 
     handleAdd = (index) => {
-        let c_tags = Array.from(this.state.campaign.tags)
-        let a_tags = Array.from(this.state.tags)
-        c_tags.push(a_tags[index])
-        a_tags.splice(index, 1)
-        let tmp = this.state.campaign
-        tmp.tags = c_tags
-        this.setState({ campaign: tmp, tags: a_tags }, () => {
+        this.setState(prevState => {
+            let data = Object.assign({}, prevState.data)
+            data.campaign.tags.push(data.tags[index])
+            data.tags.splice(index, 1);
             this.getAudienceCount()
+            return {data}  
         })
     }
 
@@ -115,12 +103,13 @@ class CampaignEdit extends React.Component {
 
     render() {
 
-        let { loading, campaign, tags, templates, audience_count, current_template } = this.state
+        let { loading, audience_count, data } = this.state
+        let { campaign, tags, templates, template_content } = data
 
         return (
             <Fragment>
                 {loading &&
-                    <LoadingScreen />
+                    <LoadingScreen title="LOADING CAMPAIGN . . ." />
                 }
                 <Helmet>
                     <title>EDIT CAMPAIGN | S:YNTH</title>
@@ -135,13 +124,13 @@ class CampaignEdit extends React.Component {
                             <div className="ChipHolder">
                                 <div className="ChipRow">
                                     {campaign.tags.map((e, i) => {
-                                        return <Chip onDelete={() => this.handleDelete(i)} label={e} />
+                                        return <Chip key={i} onDelete={() => this.handleDelete(i)} label={e} />
                                     })
                                     }
                                 </div>
                                 <div className="ChipRow">
                                     {tags.map((e, i) => {
-                                        return <Chip deleteIcon={<DoneIcon />} onDelete={() => this.handleAdd(i)} label={e} />
+                                        return <Chip key={i} deleteIcon={<DoneIcon />} onDelete={() => this.handleAdd(i)} label={e} />
                                     })
                                     }
                                 </div>
@@ -152,7 +141,7 @@ class CampaignEdit extends React.Component {
                                 <Select
                                     onChange={this.handleSelectChange}
                                     value={campaign.template_id ? campaign.template_id : ''}
-                                    
+
                                 >
                                     {templates.map((e, i) => {
                                         return <MenuItem value={e.id}>{e.name}</MenuItem>
@@ -166,12 +155,11 @@ class CampaignEdit extends React.Component {
                             </div>
                         </form>
                         <div className="Preview">
-                            {current_template.content &&
-                                <MailProvider value={{ state: { blocks: JSON.parse(current_template.content) } }}>
+                            {template_content &&
+                                <MailProvider value={{ state: { blocks: template_content } }}>
                                     <PreviewTable />
                                 </MailProvider>
                             }
-
                         </div>
                     </Paper>
                 </div>

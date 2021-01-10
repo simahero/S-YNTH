@@ -10,10 +10,6 @@ class PreviewTemplate extends React.Component {
 
     static contextType = MailContext;
 
-    componentDidMount() {
-        console.log(this.context)
-    }
-
     render() {
         return (
             <table id="preview_table" width="600" style={{ maxWidth: "600", margin: "auto", backgroundColor: "white", height: "850" }}>

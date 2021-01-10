@@ -1,47 +1,101 @@
-.Nav{
-    height: 60px;
-    min-height: 60px;
-    background-color: #121212;
-    display: flex;
-    align-items: center;
-    .BrandHolder{
-        min-width: 250px;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: center;
-        .Logo {
-            height: 35px;
-        }
-        .LogoText{
-            font-weight: 600;
-            font-size: 26px;
-            color: #dddddd;
-        }
-    }
-    .DropDownButton {
-        margin-left: auto;
-        margin-right: 20px;
-        width: 35px;
-        height: 35px;
-        background-color: #ffffff18;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        &:hover {
-            background-color: #ffffff24;
-            cursor: pointer;
-        }
-    }
-    .DropDownMenu {
-        position: absolute;
-        z-index: 30;
-        top: 58px;
-        right: 20px;
-        width: 300px;
+@import './colorScheme';
+
+.dark {
+    .Nav{
+        height: 60px;
+        min-height: 60px;
         background-color: #121212;
-        color: #dddddd;
-        padding: 10px;
+        display: flex;
+        align-items: center;
+        .BrandHolder{
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            .Logo {
+                height: 35px;
+            }
+            .LogoText{
+                font-weight: 600;
+                font-size: 26px;
+                color: #dddddd;
+            }
+        }
+        .DropDownButton {
+            margin-left: auto;
+            margin-right: 20px;
+            width: 35px;
+            height: 35px;
+            background-color: #ffffff18;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+                background-color: #ffffff24;
+                cursor: pointer;
+            }
+        }
+        .DropDownMenu {
+            position: absolute;
+            z-index: 30;
+            top: 58px;
+            right: 20px;
+            width: 300px;
+            background-color: #121212;
+            color: #dddddd;
+            padding: 10px;
+        }
+    }
+}
+
+.light {
+    .Nav{
+        height: 60px;
+        min-height: 60px;
+        background-color: $l_bgcolor;
+        display: flex;
+        align-items: center;
+        .BrandHolder{
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            .Logo {
+                height: 35px;
+            }
+            .LogoText{
+                font-weight: 600;
+                font-size: 26px;
+                color: $l_textColor;
+            }
+        }
+        .DropDownButton {
+            margin-left: auto;
+            margin-right: 20px;
+            width: 35px;
+            height: 35px;
+            background-color: #ffffff18;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+                background-color: #ffffff24;
+                cursor: pointer;
+            }
+        }
+        .DropDownMenu {
+            position: absolute;
+            z-index: 30;
+            top: 58px;
+            right: 20px;
+            width: 300px;
+            background-color: $l_bgcolor;
+            color: $l_textColor;
+            padding: 10px;
+        }
     }
 }
