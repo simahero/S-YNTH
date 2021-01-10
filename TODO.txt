@@ -1,5 +1,32 @@
 #TODOS
 
+- SQL POOL
+
+- edit template modal https://www.w3schools.com/howto/howto_js_draggable.asp
+
+npm install react-draggable
+
+.box {
+  position: absolute;
+  cursor: move;
+  color: black;
+  max-width: 215px;
+  border-radius: 5px;
+  padding: 1em;
+  margin: auto;
+  user-select: none;
+}
+
+<Draggable handle="#handle">
+   <div className="box">
+      <span id="handle">Drag here</span>
+         <div style={{ padding: "1em" }}>Cannot drag here</div>
+   </div>
+</Draggable>
+
+- edit campaign -get templates (id, name)
+- edit campaign -get single template
+
 - lazyload
 - single pages: campaign, template, audience, forms, analytics
 - export
@@ -106,3 +133,36 @@ CREATE TABLE `analytics` (
 )
 
 */
+
+
+ let c_tags = Array.from(this.state.campaign.tags)
+        let a_tags = Array.from(this.state.tags)
+        a_tags.push(c_tags[index])
+        c_tags.splice(index, 1)
+        let tmp = this.state.campaign
+        tmp.tags = c_tags
+        this.setState({ campaign: tmp, tags: a_tags }, () => {
+            this.getAudienceCount()
+        })
+
+         let c_tags = Array.from(this.state.campaign.tags)
+        let a_tags = Array.from(this.state.tags)
+        c_tags.push(a_tags[index])
+        a_tags.splice(index, 1)
+        let tmp = this.state.campaign
+        tmp.tags = c_tags
+        this.setState({ campaign: tmp, tags: a_tags }, () => {
+            this.getAudienceCount()
+        })
+
+        this.setState(prevState => ({
+            ...prevState,
+            data: {
+                ...prevState.data,
+                tags: prevState.data.tags.push(prevState.data.campaign.tags[index]),
+                campaign: {
+                    ...prevState.data.campaign,
+                    tags: prevState.data.campaign.tags.splice(index, 1)
+                }
+            }
+        }, () => this.getAudienceCount()))
