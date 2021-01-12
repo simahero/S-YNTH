@@ -3,15 +3,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mysql = require('mysql');
-const getTransporter = require('./Utils/NodemailerTest');
 const dotenv = require('dotenv');
 dotenv.config();
 
 const auth = require('./Routes/Auth/Auth')
 const api = require('./Routes/Database/API');
 const subscription = require('./Routes/Database/Subscription');
-const creation = require('./Routes/Database/Creation');
 const analytics = require('./Routes/Database/Track')
+const mail = require('./Routes/Database/Mail')
 
 
 const port = process.env.PORT || 3000;
@@ -45,30 +44,9 @@ app.use(bodyParser.json());
 //ROUTES
 app.use('/api/v1/auth', auth(connection));
 app.use('/api/v1', api(connection));
+app.use('/api/v1/mail', mail(connection))
 app.use('/api/v1/subscription', subscription(connection));
-app.use('/api/v1/create', creation(connection));
 app.use('/api/v1/analytics', analytics(connection));
-
-
-app.get('/test', (req, res) => {
-
-    getTransporter().then(transporter => {
-        var mailOP = {
-            from: "me",
-            to: "zoilei7@gmail.com",
-            subject: "test",
-            html: "<div><img src='http://localhost:5000/api/v1/analytics/track?campaign_id=testC&audience_id=testA'><a target='_blank' href='http://localhost:5000/api/v1/analytics/redirect?url=https://google.com&campaign_id=1&audience_id=1&link_id=1'>TEST LINK </a></div>"
-        }
-
-        transporter.sendMail(mailOP)
-            .then(info => {
-                console.log('Preview URL: ' + nodemailer.getTestMessageUrl(info));
-            })
-            .catch(err => res.status(400).send(err))
-    })
-        .catch(err => res.status(500).send('Failed to create test account!'))
-})
-
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../REACTJS/build/index.html'));
