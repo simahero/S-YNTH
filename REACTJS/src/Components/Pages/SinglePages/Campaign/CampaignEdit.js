@@ -7,6 +7,7 @@ import Nav from '../../../UI/Nav';
 import LoadingScreen from '../../../UI/LoadingScreen';
 import PreviewTable from '../Template/PreviewTemplate';
 import { MailProvider } from '../../../Context/MailContext';
+import { Link } from 'react-router-dom';
 
 class CampaignEdit extends React.Component {
 
@@ -89,6 +90,10 @@ class CampaignEdit extends React.Component {
         })
     }
 
+    onEdit = () => {
+
+    }
+
     onSave = () => {
         if (this.useQuery().get('id')) {
             API.put('/campaigns', { campaign: this.state.campaign })
@@ -114,7 +119,7 @@ class CampaignEdit extends React.Component {
                 <Helmet>
                     <title>EDIT CAMPAIGN | S:YNTH</title>
                 </Helmet>
-                <Nav />
+                <Nav menu={true} />
                 <div className="MainHolder">
                     <Paper className="Paper" elevation={3} >
                         <form className="PaperInner">
@@ -150,7 +155,7 @@ class CampaignEdit extends React.Component {
                                 </Select>
                             </div>
                             <div className="SaveButtonHolder">
-                                <Button onClick={this.onSave}> EDIT TEMPLATE </Button>
+                                <Button><Link to={{pathname: "/template/edit", search: `?id=${campaign.template_id}`}}>EDIT TEMPLATE</Link></Button>
                                 <Button onClick={this.onSave}> SAVE </Button>
                             </div>
                         </form>

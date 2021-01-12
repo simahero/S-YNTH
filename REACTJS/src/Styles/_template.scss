@@ -1,3 +1,5 @@
+@import './colorScheme';
+
 .dark {
     .EditMain{
         width: 100%;
@@ -62,5 +64,64 @@
 }
 
 .light {
-
+    .EditMain{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        .EditSidebar{
+            flex: 20%;
+            height: 100vh;
+            min-width: 250px;
+            background-color: #dddddd;
+            .EditOptions{
+                color: #121212;
+                margin: 0 1%;
+            }
+            .EditBlocks{
+                margin: 0 1%;
+                overflow-y: visible !important;
+                height: auto;
+            }
+            .EditTableHolder{
+                display: block;
+                margin: auto;
+                margin-top: 1%;
+                width: 90%;
+            }
+            .EditBox {
+                background-color:#ffffff10;
+                border-radius: 5px;
+                color: #121212;
+                text-align: center;
+                padding: 5px;
+                margin: 10px;
+                flex: 50%;
+                &:hover {
+                    background-color:#ffffff16;
+                    cursor: pointer;
+                }
+            }
+            .SidebarHeader {
+                display: flex;
+            }
+        }
+        .EditPreview{
+            flex: 80%;
+            height: 100vh;
+            padding: 1%;
+            justify-content: center;
+            align-items: center;
+            min-width: 800px;
+            background: rgb(221,221,221);
+            background: linear-gradient(175deg,rgba(221, 221, 221, 1) 0%, rgba(219, 219, 219, 1) 100%);
+            .EditPreviewHolder {
+                table tr td{
+                    &:hover {
+                        border: 1px solid black;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
 }

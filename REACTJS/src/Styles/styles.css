@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
 .dark .LoginMain {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -643,16 +644,18 @@
 
 .dark .DashboardMain .DashboardHeadingWrapper .HeadingButton {
   background-color: #dddddd !important;
+  color: #121212 !important;
   margin-right: 10px !important;
   min-width: 200px !important;
 }
 
-.dark .DashboardMain .DashboardDataTable .ActionButtons {
-  min-width: 36px !important;
+.dark .DashboardMain .DashboardHeadingWrapper .HeadingButton svg {
+  fill: #121212;
+  margin-right: 5px;
 }
 
-.dark .DashboardMain .DashboardDataTable .MuiDataGrid-root {
-  color: #dddddd;
+.dark .DashboardMain .DashboardDataTable .ActionButtons {
+  min-width: 36px !important;
 }
 
 .dark .DashboardMain .DataTableHolder {
@@ -690,12 +693,21 @@
 }
 
 .light .Box:hover {
-  background-color: #00000016;
+  background-color: #ffffff16;
   cursor: pointer;
 }
 
-.light .Box .active {
-  background-color: #00000024;
+.light .BoxActive {
+  background-color: #ffffff24;
+  border-radius: 5px;
+  color: #121212;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.light .BoxActive:hover {
+  cursor: pointer;
 }
 
 .light .DashboardMain {
@@ -704,8 +716,54 @@
   -webkit-box-flex: 80%;
       -ms-flex: 80%;
           flex: 80%;
-  background: #121212;
-  background: linear-gradient(175deg, #121212 0%, #141414 100%);
+  background: #dddddd;
+  background: linear-gradient(175deg, #dddddd 0%, #dbdbdb 100%);
+}
+
+.light .DashboardMain .DashboardHeadingWrapper {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 10px;
+}
+
+.light .DashboardMain .DashboardHeadingWrapper .DashboardHeading {
+  text-align: center;
+  color: #121212;
+  font-size: 26px;
+  margin: auto;
+}
+
+.light .DashboardMain .DashboardHeadingWrapper .HeadingButton {
+  background-color: #121212 !important;
+  color: #dddddd !important;
+  margin-right: 10px !important;
+  min-width: 200px !important;
+}
+
+.light .DashboardMain .DashboardHeadingWrapper .HeadingButton svg {
+  fill: #dddddd;
+  margin-right: 5px;
+}
+
+.light .DashboardMain .DashboardDataTable .ActionButtons {
+  min-width: 36px !important;
+}
+
+.light .DashboardMain .DataTableHolder {
+  height: calc(100vh - 80px);
+  margin: 10px;
+  width: calc(100% - 20px);
+  background-color: #ffffff20;
+  border-radius: 4px;
+  text-align: center;
 }
 
 .dark .MainHolder {
@@ -1032,5 +1090,337 @@
 .dark .EditMain .EditPreview .EditPreviewHolder table tr td:hover {
   border: 1px solid black;
   cursor: pointer;
+}
+
+.light .EditMain {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.light .EditMain .EditSidebar {
+  -webkit-box-flex: 20%;
+      -ms-flex: 20%;
+          flex: 20%;
+  height: 100vh;
+  min-width: 250px;
+  background-color: #dddddd;
+}
+
+.light .EditMain .EditSidebar .EditOptions {
+  color: #121212;
+  margin: 0 1%;
+}
+
+.light .EditMain .EditSidebar .EditBlocks {
+  margin: 0 1%;
+  overflow-y: visible !important;
+  height: auto;
+}
+
+.light .EditMain .EditSidebar .EditTableHolder {
+  display: block;
+  margin: auto;
+  margin-top: 1%;
+  width: 90%;
+}
+
+.light .EditMain .EditSidebar .EditBox {
+  background-color: #ffffff10;
+  border-radius: 5px;
+  color: #121212;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  -webkit-box-flex: 50%;
+      -ms-flex: 50%;
+          flex: 50%;
+}
+
+.light .EditMain .EditSidebar .EditBox:hover {
+  background-color: #ffffff16;
+  cursor: pointer;
+}
+
+.light .EditMain .EditSidebar .SidebarHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.light .EditMain .EditPreview {
+  -webkit-box-flex: 80%;
+      -ms-flex: 80%;
+          flex: 80%;
+  height: 100vh;
+  padding: 1%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 800px;
+  background: #dddddd;
+  background: linear-gradient(175deg, #dddddd 0%, #dbdbdb 100%);
+}
+
+.light .EditMain .EditPreview .EditPreviewHolder table tr td:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.dark .MuiDataGrid-root {
+  color: #dddddd;
+  border: none !important;
+}
+
+.dark .MuiDataGrid-iconSeparator {
+  fill: transparent;
+}
+
+.dark .MuiButton-label svg {
+  fill: #dddddd;
+}
+
+.dark .MuiIconButton-label svg {
+  fill: #dddddd;
+}
+
+.dark .MuiDataGridFilterForm-root {
+  margin-top: 2px;
+  background-color: #121212;
+  color: #dddddd;
+}
+
+.dark .MuiDataGridFilterForm-root .MuiFormLabel-root {
+  color: #dddddd;
+}
+
+.dark .MuiDataGridFilterForm-root .MuiSelect-root {
+  color: #dddddd;
+}
+
+.dark .MuiDataGridFilterForm-root option {
+  background-color: #121212 !important;
+  color: #dddddd;
+}
+
+.dark .MuiInputBase-root {
+  color: #dddddd;
+}
+
+.dark .MuiFormControl-root label {
+  color: #dddddd;
+}
+
+.dark .MuiPopover-root .MuiPaper-root {
+  background-color: #121212;
+  margin-top: 40px;
+  color: #dddddd;
+}
+
+.dark .MuiButton-root {
+  color: #dddddd;
+}
+
+.dark .MuiTypography-root {
+  color: #dddddd;
+}
+
+.dark .DraggableModal {
+  position: absolute;
+  z-index: 9;
+  background-color: #353535;
+  border: 1px solid #ffffff10;
+  text-align: center;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.dark .DraggableModal .DraggableModalHeader {
+  padding: 10px;
+  z-index: 10;
+  background-color: #121212;
+  color: #dddddd;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dark .DraggableModal .DraggableModalHeader .DraggableModalHeaderHandle {
+  cursor: move;
+  -webkit-box-flex: 10%;
+      -ms-flex: 10%;
+          flex: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dark .DraggableModal .DraggableModalHeader .DraggableModalHeaderHandle svg {
+  fill: #dddddd;
+}
+
+.dark .DraggableModal .DraggableModalHeader .DraggableModalHeaderContent {
+  text-align: center;
+  -webkit-box-flex: 9;
+      -ms-flex: 9 0%;
+          flex: 9 0%;
+}
+
+.dark .DraggableModal .DraggableModalBody {
+  padding: 10px;
+  z-index: 10;
+  background-color: #353535;
+  color: #dddddd;
+  border-radius: 4px;
+}
+
+.light .DraggableModal {
+  position: absolute;
+  z-index: 9;
+  background-color: #dddddd;
+  border: 1px solid #00000010;
+  text-align: center;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.light .DraggableModal .DraggableModalHeader {
+  padding: 10px;
+  z-index: 10;
+  background-color: #a7a7a7;
+  color: #121212;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.light .DraggableModal .DraggableModalHeader .DraggableModalHeaderHandle {
+  cursor: move;
+  -webkit-box-flex: 10%;
+      -ms-flex: 10%;
+          flex: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.light .DraggableModal .DraggableModalHeader .DraggableModalHeaderHandle svg {
+  fill: #121212;
+}
+
+.light .DraggableModal .DraggableModalHeader .DraggableModalHeaderContent {
+  text-align: center;
+  -webkit-box-flex: 9;
+      -ms-flex: 9 0%;
+          flex: 9 0%;
+}
+
+.light .DraggableModal .DraggableModalBody {
+  padding: 10px;
+  z-index: 10;
+  background-color: #dddddd;
+  color: #121212;
+  border-radius: 4px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Kanit', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+li {
+  display: block;
+  text-align: -webkit-match-parent;
+  color: unset;
+}
+
+.dark::-webkit-scrollbar {
+  width: 15px;
+}
+
+.dark::-webkit-scrollbar-track {
+  background-color: #121212;
+}
+
+.dark::-webkit-scrollbar-thumb {
+  background: #dddddd;
+  border-radius: 4px;
+}
+
+.dark::-webkit-scrollbar-thumb:hover {
+  background: #8f8f8f;
+}
+
+.light::-webkit-scrollbar {
+  width: 15px;
+}
+
+.light::-webkit-scrollbar-track {
+  background-color: #dddddd;
+}
+
+.light::-webkit-scrollbar-thumb {
+  background: #121212;
+  border-radius: 4px;
+}
+
+.light::-webkit-scrollbar-thumb:hover {
+  background: #383838;
 }
 /*# sourceMappingURL=styles.css.map */

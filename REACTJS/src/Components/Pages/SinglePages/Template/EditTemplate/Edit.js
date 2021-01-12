@@ -4,6 +4,8 @@ import Mail from './Mail';
 import Sidebar from './Sidebar';
 import Nav from '../../../../UI/Nav';
 import LoadingScreen from '../../../../UI/LoadingScreen';
+import API from '../../../../../Utils/API/API';
+import DraggableModal from '../../../../UI/DataTables/DraggableModal';
 
 class Edit extends React.Component {
 
@@ -19,16 +21,25 @@ class Edit extends React.Component {
         this.handler = this.handler.bind(this)
     }
 
-    handler(newState) {
-        this.setState(newState, () => {
-            console.log(JSON.stringify(this.state.blocks));
+    componentDidMount() {
+        //QUERY THE BLOCKS
+        API.get(`/templates?id=${this.useQuery().get('id')}`)
+            .then(res => {
+                this.setState({ data: res.data, loading: false }, () => this.getAudienceCount())
+            })
+            .catch(err => console.log(err))
+        this.setState({
+            loading: false
         });
     }
 
-    componentDidMount() {
-        //QUERY THE BLOCKS
-        this.setState({
-            loading: false
+    useQuery = () => {
+        return new URLSearchParams(this.props.location.search);
+    }
+
+    handler(newState) {
+        this.setState(newState, () => {
+            console.log(JSON.stringify(this.state.blocks));
         });
     }
 
@@ -40,6 +51,14 @@ class Edit extends React.Component {
                         <LoadingScreen />
                     }
                     <Nav />
+                    <DraggableModal>
+                        <p>Move</p>
+                        <p>this</p>
+                        <p>DIV</p>
+                        <p>Move</p>
+                        <p>this</p>
+                        <p>DIV</p>
+                    </DraggableModal>
                     <div className="EditMain">
                         <Sidebar />
                         <div className="EditPreview">

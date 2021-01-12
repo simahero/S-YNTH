@@ -3,9 +3,10 @@ import { GridOverlay, DataGrid } from '@material-ui/data-grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Button from "@material-ui/core/Button";
 
-import { GrAnalytics } from 'react-icons/gr';
+import { DiGoogleAnalytics } from 'react-icons/di';
 import { MdModeEdit, MdSend } from 'react-icons/md';
 import { AiFillDelete } from 'react-icons/ai';
+import { Box } from '@material-ui/core';
 
 const CampaignDataTable = (props) => {
 
@@ -24,7 +25,7 @@ const CampaignDataTable = (props) => {
             <Button className="ActionButtons" onClick={() => props.deleteClick(param.row.id)}><AiFillDelete /></Button>
             {param.value ?
               <Button className="ActionButtons" onClick={() => props.sendClick(param.row.id)}><MdSend /></Button> :
-              <Button className="ActionButtons" onClick={() => props.analyticsClick(param.row.id)}><GrAnalytics /></Button>
+              <Button className="ActionButtons" onClick={() => props.analyticsClick(param.row.id)}><DiGoogleAnalytics /></Button>
             }
           </div>
         );
@@ -43,7 +44,7 @@ const CampaignDataTable = (props) => {
   }
 
   return (
-    <div className="DataTableHolder">
+    <Box boxShadow={2} className="DataTableHolder">
         <DataGrid
           components={{
             loadingOverlay: loadingOverlay,
@@ -58,7 +59,7 @@ const CampaignDataTable = (props) => {
           pageSize={15}
           checkboxSelection
         />
-    </div>
+    </Box>
   );
 }
 

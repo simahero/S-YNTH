@@ -31,10 +31,16 @@ class App extends React.Component {
 
   toggleTheme = () => {
     if (this.state.theme === 'light') {
-      this.setState({ theme: 'dark' })
+      this.setState({ theme: 'dark' }, () => {
+        document.body.classList.add('dark')
+        document.body.classList.remove('light')
+      })
       localStorage.setItem('theme', 'dark')
     } else {
-      this.setState({ theme: 'light' })
+      this.setState({ theme: 'light' }, () => {
+        document.body.classList.add('light')
+        document.body.classList.remove('dark')
+      })
       localStorage.setItem('theme', 'light')
     }
   }
@@ -65,11 +71,17 @@ class App extends React.Component {
     const savedTheme = localStorage.getItem('theme')
 
     if ('theme' in localStorage) {
-      this.setState({ theme: savedTheme })
+      this.setState({ theme: savedTheme }, () => {
+        document.body.classList.add(savedTheme)
+      })
     } else if (this.getPreferedTheme) {
-      this.setState({ theme: 'dark' })
+      this.setState({ theme: 'dark' }, () => {
+        document.body.classList.add('dark')
+      })
     } else {
-      this.setState({ theme: 'light' })
+      this.setState({ theme: 'light' }, () => {
+        document.body.classList.add('light')
+      })
     }
 
   }
@@ -84,7 +96,7 @@ class App extends React.Component {
     return (
       <ThemeProvider value={{ theme: theme, toggleTheme: toggleTheme }} >
         <UserProvider value={{ isAuth: isAuth, setAuth: setAuth }}>
-          <div className={theme}>
+
             <Router>
               <Suspense fallback={<LoadingScreen />}>
                 <Switch>
@@ -111,7 +123,7 @@ class App extends React.Component {
                 </Switch>
               </Suspense>
             </Router>
-          </div>
+
         </UserProvider>
       </ThemeProvider>
     );

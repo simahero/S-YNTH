@@ -30,9 +30,11 @@ class Nav extends React.Component {
                             <p className="LogoText">YNTH</p>
                         </div>
                     </Link>
-                    <div className="DropDownButton" onClick={this.toggleOpen}>
-                        <RiSettings6Line />
-                    </div>
+                    {this.props.menu &&
+                        <div className="DropDownButton" onClick={this.toggleOpen}>
+                            <RiSettings6Line />
+                        </div>
+                    }
                     {this.state.open &&
                         <Paper className="DropDownMenu">
                             <h3 align="center"> SETTINGS </h3>

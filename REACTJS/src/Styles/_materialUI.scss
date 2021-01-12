@@ -1,0 +1,53 @@
+.dark {
+    .MuiDataGrid-root {
+        color: #dddddd;
+        border: none !important;
+    }
+    .MuiDataGrid-iconSeparator {
+        fill: transparent;
+    }
+    .MuiButton-label svg {
+        fill: #dddddd;
+    }
+    .MuiIconButton-label svg {
+        fill: #dddddd;
+    }
+    .MuiDataGridFilterForm-root {
+        margin-top: 2px;
+        background-color: #121212;
+        color: #dddddd;
+        .MuiFormLabel-root {
+            color: #dddddd;
+        }
+        .MuiSelect-root {
+            color: #dddddd
+        }
+        option {
+            background-color: #121212 !important;
+            color: #dddddd;
+        }
+    }
+    .MuiInputBase-root {
+        color: #dddddd;
+    }
+    .MuiFormControl-root label {
+        color: #dddddd;
+    }
+    .MuiPopover-root {
+        .MuiPaper-root {
+            background-color: #121212;
+            margin-top: 40px;
+            color: #dddddd;
+        }
+    }
+    .MuiButton-root {
+        color: #dddddd;
+    }
+    .MuiTypography-root {
+        color: #dddddd;
+    }
+}
+
+.light {
+
+}

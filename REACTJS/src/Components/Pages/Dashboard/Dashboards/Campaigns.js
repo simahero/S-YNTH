@@ -52,9 +52,11 @@ class Campaigns extends React.Component {
 
     deleteClick = (id) => {
         if (window.confirm('Are you sure you want to delete this campaign?')) {
-            API.delete('path', { id: id }).then(() => {
-                this.setState({
-                    data: this.state.data.splice(id, 1)
+            API.delete('/campaigns', { id: id }).then(() => {
+                this.setState(prevState => {
+                    let tmp = Object.assign({}, prevState)
+                    tmp.data.splice(id, 1)
+                    return tmp
                 })
             })
                 .catch((err) => {

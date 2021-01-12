@@ -1,0 +1,89 @@
+@import './colorScheme';
+
+.dark {
+    .DraggableModal {
+        position: absolute;
+        z-index: 9;
+        background-color: #353535;
+        border: 1px solid #ffffff10;
+        text-align: center;
+        border-radius: 4px;
+        width: 250px;
+        .DraggableModalHeader {
+            padding: 10px;
+            z-index: 10;
+            background-color: #121212;
+            color: #dddddd;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            .DraggableModalHeaderHandle {
+                cursor: move;
+                flex: 10%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg {
+                    fill : #dddddd; 
+                }
+            }
+            .DraggableModalHeaderContent {
+                text-align: center;
+                flex: 9 0%;
+            }
+        }
+        .DraggableModalBody {
+            padding: 10px;
+            z-index: 10;
+            background-color: #353535;
+            color: #dddddd;
+            border-radius: 4px;
+        }
+    }
+}
+
+.light {
+    .DraggableModal {
+        position: absolute;
+        z-index: 9;
+        background-color: #dddddd;
+        border: 1px solid #00000010;
+        text-align: center;
+        border-radius: 4px;
+        width: 250px;
+        .DraggableModalHeader {
+            padding: 10px;
+            z-index: 10;
+            background-color: #a7a7a7;
+            color: #121212;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            .DraggableModalHeaderHandle {
+                cursor: move;
+                flex: 10%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg {
+                    fill : #121212; 
+                }
+            }
+            .DraggableModalHeaderContent {
+                text-align: center;
+                flex: 9 0%;
+            }
+        }
+        .DraggableModalBody {
+            padding: 10px;
+            z-index: 10;
+            background-color: #dddddd;
+            color: #121212;
+            border-radius: 4px;
+        }
+    }
+}

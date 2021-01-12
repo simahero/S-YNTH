@@ -63,12 +63,12 @@ class Dashboard extends React.Component {
                     <div className="DashboardSidebar">
                     <Nav />
                         <ul>
-                            <Box className={this.state.dashboard === 'campaigns' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('campaigns')} boxShadow={3}><li> Campaigns </li></Box>
-                            <Box className={this.state.dashboard === 'templates' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('templates')} boxShadow={3}><li> Templates </li></Box>
-                            <Box className={this.state.dashboard === 'audience' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('audience')} boxShadow={3}><li> Audience </li></Box>
-                            <Box className={this.state.dashboard === 'automation' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('automation')} boxShadow={3}><li> Automation </li></Box>
-                            <Box className={this.state.dashboard === 'forms' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('forms')} boxShadow={3}><li> Forms </li></Box>
-                            <Box className={this.state.dashboard === 'analytics' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('analytics')} boxShadow={3}><li> Analytics </li></Box>
+                            <Box className={this.state.dashboard === 'campaigns' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('campaigns')} boxShadow={2}><li> Campaigns </li></Box>
+                            <Box className={this.state.dashboard === 'templates' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('templates')} boxShadow={2}><li> Templates </li></Box>
+                            <Box className={this.state.dashboard === 'audience' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('audience')} boxShadow={2}><li> Audience </li></Box>
+                            <Box className={this.state.dashboard === 'automation' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('automation')} boxShadow={2}><li> Automation </li></Box>
+                            <Box className={this.state.dashboard === 'forms' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('forms')} boxShadow={2}><li> Forms </li></Box>
+                            <Box className={this.state.dashboard === 'analytics' ? 'BoxActive' : 'Box'} onClick={() => this.switchDashboard('analytics')} boxShadow={2}><li> Analytics </li></Box>
                         </ul>
                     </div>
                     <div className="DashboardMain">

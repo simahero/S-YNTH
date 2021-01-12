@@ -34,24 +34,24 @@ class Sidebar extends React.Component {
         return (
             <div className="EditSidebar">
                 <div className="SidebarHeader">
-                    <Box className="EditBox" boxShadow={3} onClick={() => this.context.handler({ sideBarTab: 'blocks' })}>BLOCKS</Box>
-                    <Box className="EditBox" boxShadow={3} onClick={() => this.context.handler({ sideBarTab: 'options' })}>OPTIONS</Box>
+                    <Box className="EditBox" boxShadow={2} onClick={() => this.context.handler({ sideBarTab: 'blocks' })}>BLOCKS</Box>
+                    <Box className="EditBox" boxShadow={2} onClick={() => this.context.handler({ sideBarTab: 'options' })}>OPTIONS</Box>
                 </div>
                 {this.context.state.sideBarTab === 'blocks' &&
                     <div className="EditBlocks">
                         <ul>
                             <li
                                 onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefultOptions.header]}) }}
-                            ><Box className="EditBox" boxShadow={3}>Header</Box></li>
+                            ><Box className="EditBox" boxShadow={2}>Header</Box></li>
                             <li
                                 onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefaultOptions.parahraph]}) }}
-                            ><Box className="EditBox" boxShadow={3}>Paragraph</Box></li>
+                            ><Box className="EditBox" boxShadow={2}>Paragraph</Box></li>
                             <li
                                 onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefaultOptions.image]}) }}
-                            ><Box className="EditBox" boxShadow={3}>Image</Box></li>
+                            ><Box className="EditBox" boxShadow={2}>Image</Box></li>
                             <li
                                 onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefaultOptions.socialshare]}) }}
-                            ><Box className="EditBox" boxShadow={3}>SocialShare</Box></li>
+                            ><Box className="EditBox" boxShadow={2}>SocialShare</Box></li>
                         </ul>
                     </div>
                 }

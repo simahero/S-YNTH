@@ -54,21 +54,31 @@
             }
             .HeadingButton {
                 background-color: #dddddd !important;
+                color: #121212 !important;
                 margin-right: 10px !important;
                 min-width: 200px !important;
+                svg {
+                    fill: #121212;
+                    margin-right: 5px;
+                }
             }
         }
         .DashboardDataTable{
             .ActionButtons {
                 min-width: 36px !important;
             }
-            .MuiDataGrid-root {
-                color: #dddddd;
-            }
+        }
+        .DataTableHolder {
+            height: calc(100vh - 80px);
+            margin: 10px;
+            width: calc(100% - 20px);
+            background-color: #ffffff20;
+            border-radius: 4px;
+            text-align: center;
+            
         }
     }
 }
-
 
 .light {
     .Dashboard {
@@ -89,18 +99,63 @@
         padding: 5px;
         margin: 10px;
         &:hover {
-            background-color: #00000016;
+            background-color: #ffffff16;
             cursor: pointer;
         }
-        .active {
-            background-color: #00000024;
+    }
+    .BoxActive {
+        background-color: #ffffff24;
+        border-radius: 5px;
+        color: $l_textColor;
+        text-align: center;
+        padding: 5px;
+        margin: 10px;
+        &:hover {
+            cursor: pointer;
         }
     }
     .DashboardMain {
         overflow: auto;
         height: 100vh;
         flex: 80%;
-        background: rgb(18,18,18);
-        background: linear-gradient(175deg, rgba(18,18,18,1) 0%, rgba(20,20,20,1) 100%);
+        background: rgb(221,221,221);
+        background: linear-gradient(175deg,rgba(221, 221, 221, 1) 0%, rgba(219, 219, 219, 1) 100%);
+        .DashboardHeadingWrapper {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            .DashboardHeading {
+                text-align: center;
+                color: $l_textColor;
+                font-size: 26px;
+                margin: auto;
+            }
+            .HeadingButton {
+                background-color: $l_textColor !important;
+                color: $l_bgcolor !important;
+                margin-right: 10px !important;
+                min-width: 200px !important;
+                svg {
+                    fill: $l_bgcolor;
+                    margin-right: 5px;
+                }
+            }
+        }
+        .DashboardDataTable{
+            .ActionButtons {
+                min-width: 36px !important;
+            }
+        }
+        .DataTableHolder {
+            height: calc(100vh - 80px);
+            margin: 10px;
+            width: calc(100% - 20px);
+            background-color: #ffffff20;
+            border-radius: 4px;
+            text-align: center;
+            
+        }
     }
 }
