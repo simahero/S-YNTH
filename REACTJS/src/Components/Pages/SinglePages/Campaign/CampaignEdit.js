@@ -39,7 +39,10 @@ class CampaignEdit extends React.Component {
             .then(res => {
                 this.setState({ data: res.data, loading: false }, () => this.getAudienceCount())
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                this.setState({ loading: false })
+            })
 
     }
 

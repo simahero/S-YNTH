@@ -76,6 +76,16 @@
             .EditOptions{
                 color: #121212;
                 margin: 0 1%;
+                .HeaderOptionsAlign{
+                    .AlignButtons{
+                        &:hover {
+                            background-color: #ffffff16;
+                        }
+                        svg {
+                            fill: #121212;
+                        }
+                    }
+                }
             }
             .EditBlocks{
                 margin: 0 1%;

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ThemeContext from '../Context/ThemeContext';
 import { Paper, Switch } from '@material-ui/core'
 import { Link } from 'react-router-dom';
@@ -26,7 +25,7 @@ class Nav extends React.Component {
                 <nav className="Nav">
                     <Link to="/">
                         <div className="BrandHolder">
-                            <img className="Logo" alt="logo" src={this.context.theme == 'dark' ? './assets/images/llogo.png' : './assets/images/dlogo.png'} />
+                            <img className="Logo" alt="logo" src={this.context.theme === 'dark' ? './assets/images/llogo.png' : './assets/images/dlogo.png'} />
                             <p className="LogoText">YNTH</p>
                         </div>
                     </Link>

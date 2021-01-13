@@ -2,11 +2,16 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import { FaAlignLeft, FaAlignCenter, FaAlignRight, FaAlignJustify } from "react-icons/fa";
 import './Options.css';
-import MailContext from '../../../../../Context/MailContext';
+import MailContext from '../../../../../../Context/MailContext';
 
 class HeaderOptions extends React.Component {
 
     static contextType = MailContext
+
+    constructor(props){
+        super(props)
+        this.setContent.bind(this)
+    }
 
     setAlign(align) {
         let temp = this.context.state.blocks;
@@ -14,10 +19,11 @@ class HeaderOptions extends React.Component {
         this.context.handler({blocks: temp})
     }
 
-    setContent(content) {
-        let temp = this.context.state.blocks;
-        temp[this.context.state.currentIndex].options.content = content;
-        this.context.handler({blocks: temp})
+    setContent(e) {
+        console.log('this:? ', this)
+        let temp = Object.assign({}, this.context.state)
+        temp.blocks[temp.currentIndex].options.content = e
+        this.context.handler(temp)
     }
 
     setBlockStyle(key, value) {
@@ -44,7 +50,7 @@ class HeaderOptions extends React.Component {
                     className="HeaderOptionsInput"
                     type="text"
                     value={header.options.content}
-                    onChange={(e) => { this.setContent(e.target.value) }}>
+                    onChange={(e) => this.setContent(e.target.value)}>
                 </input>
                 <div className="ColorPanel">
                     <p>Color: </p> <input type="color" onChange={(e) => this.setBlockStyle('color', e.target.value)}></input>

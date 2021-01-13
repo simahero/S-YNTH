@@ -1114,6 +1114,14 @@
   margin: 0 1%;
 }
 
+.light .EditMain .EditSidebar .EditOptions .HeaderOptionsAlign .AlignButtons:hover {
+  background-color: #ffffff16;
+}
+
+.light .EditMain .EditSidebar .EditOptions .HeaderOptionsAlign .AlignButtons svg {
+  fill: #121212;
+}
+
 .light .EditMain .EditSidebar .EditBlocks {
   margin: 0 1%;
   overflow-y: visible !important;
@@ -1360,6 +1368,77 @@
   background-color: #dddddd;
   color: #121212;
   border-radius: 4px;
+}
+
+.light .ModalElementHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 1px solid #00000016;
+  padding: 5px 5px;
+}
+
+.light .ModalElementHolder:hover {
+  background-color: #00000016;
+}
+
+.light .ModalElementHolder .ModalElementTitle {
+  -webkit-box-flex: 80%;
+      -ms-flex: 80%;
+          flex: 80%;
+  text-align: left;
+  min-height: 30px;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.light .ModalElementHolder .ModalElementTitle:hover {
+  cursor: pointer;
+}
+
+.light .ModalElementHolder .ModalElementAction {
+  -webkit-box-flex: 20%;
+      -ms-flex: 20%;
+          flex: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.light .ModalElementHolder .ModalElementAction .ModalElementDelete {
+  padding: 3px;
+}
+
+.light .ModalElementHolder .ModalElementAction .ModalElementDelete:hover {
+  cursor: pointer;
+}
+
+.light .ModalElementHolder .ModalElementAction .ModalElementHandle {
+  padding: 3px;
+}
+
+.light .ModalElementHolder .ModalElementAction .ModalElementHandle:hover {
+  cursor: move;
 }
 
 * {

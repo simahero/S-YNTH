@@ -1,5 +1,6 @@
-module.exports = {
-    header: {
+
+export function header(){
+    return ({
         tag: 'Header',
         options: {
             style: {
@@ -8,8 +9,11 @@ module.exports = {
             content: 'Header',
             align: 'center',
         }
-    },
-    image: {
+    });
+}
+
+export function image() {
+    return ({
         tag: 'Image',
         options: {
             style: {},
@@ -19,15 +23,21 @@ module.exports = {
             align: "center",
             src: ''
         }
-    },
-    parahraph: {
+    })
+}
+
+export function parahraph() {
+    return ({
         tag: 'Paragraph',
         options: {
             style: {},
-            content: ''
+            content: 'Paragraph'
         }
-    },
-    socialshare: {
+    })
+}
+
+export function socialshare() {
+    return ({
         tag: 'SocialShare',
         options: {
             style: {
@@ -61,5 +71,5 @@ module.exports = {
                 link: "#"
             }]
         }
-    }
+    })
 }

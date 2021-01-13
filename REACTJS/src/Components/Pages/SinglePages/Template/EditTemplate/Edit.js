@@ -1,11 +1,11 @@
 import React from 'react';
 import { MailProvider } from '../../../../Context/MailContext';
 import Mail from './Mail';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar/Sidebar';
 import Nav from '../../../../UI/Nav';
 import LoadingScreen from '../../../../UI/LoadingScreen';
 import API from '../../../../../Utils/API/API';
-import DraggableModal from '../../../../UI/DataTables/DraggableModal';
+import DraggableModal from '../../../../UI/DraggableModal/DraggableModal';
 
 class Edit extends React.Component {
 
@@ -27,10 +27,12 @@ class Edit extends React.Component {
             .then(res => {
                 this.setState({ data: res.data, loading: false }, () => this.getAudienceCount())
             })
-            .catch(err => console.log(err))
-        this.setState({
-            loading: false
-        });
+            .catch(err => {
+                console.log(err)
+                this.setState({
+                    loading: false
+                })
+            })
     }
 
     useQuery = () => {
@@ -38,9 +40,7 @@ class Edit extends React.Component {
     }
 
     handler(newState) {
-        this.setState(newState, () => {
-            console.log(JSON.stringify(this.state.blocks));
-        });
+        this.setState(newState)
     }
 
     render() {
@@ -48,17 +48,10 @@ class Edit extends React.Component {
             <MailProvider value={{ state: this.state, handler: this.handler }} >
                 <div>
                     {this.state.loading &&
-                        <LoadingScreen />
+                        <LoadingScreen title="LOADING TEMPLATE . . ." />
                     }
                     <Nav />
-                    <DraggableModal>
-                        <p>Move</p>
-                        <p>this</p>
-                        <p>DIV</p>
-                        <p>Move</p>
-                        <p>this</p>
-                        <p>DIV</p>
-                    </DraggableModal>
+                    <DraggableModal blocks={this.state.blocks} />
                     <div className="EditMain">
                         <Sidebar />
                         <div className="EditPreview">

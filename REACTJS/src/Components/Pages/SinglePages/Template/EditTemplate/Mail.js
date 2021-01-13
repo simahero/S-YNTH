@@ -19,13 +19,13 @@ const Mail = () => {
                     {context.state.blocks.map((block, index) => {
                         switch (block.tag){
                             case 'Header':
-                                return <Header index={index} />;
+                                return <Header key={index} index={index} />;
                             case 'Image':
-                                return <Image index={index} />;
+                                return <Image key={index} index={index} />;
                             case 'Paragraph':
-                                return <Paragraph index={index} />;
+                                return <Paragraph key={index} index={index} />;
                             case 'SocialShare':
-                                return <SocialShare index={index} />;
+                                return <SocialShare key={index} index={index} />;
                             default:
                                 return false
                             }
