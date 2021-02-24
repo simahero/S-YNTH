@@ -2,11 +2,11 @@ import React, { Fragment } from 'react';
 import { Helmet } from "react-helmet";
 import { Paper, Button, Select, MenuItem, TextField, Chip } from '@material-ui/core'
 import DoneIcon from '@material-ui/icons/Done';
-import API from '../../../../Utils/API/API'
-import Nav from '../../../UI/Nav';
-import LoadingScreen from '../../../UI/LoadingScreen';
-import PreviewTable from '../Template/PreviewTemplate';
-import { MailProvider } from '../../../Context/MailContext';
+import API from '../../../../../Utils/API/API'
+import Nav from '../../../../UI/Nav';
+import LoadingScreen from '../../../../UI/LoadingScreen';
+import PreviewTable from '../../Template/PreviewTemplate';
+import { MailProvider } from '../../../../Context/MailContext';
 import { Link } from 'react-router-dom';
 
 class CampaignEdit extends React.Component {
@@ -68,7 +68,7 @@ class CampaignEdit extends React.Component {
     getAudienceCount = () => {
         API.get(`/audience_count?tags=${JSON.stringify(this.state.data.campaign.tags)}`)
             .then(res => {
-                this.setState({audience_count: res.data[0].count})
+                this.setState({ audience_count: res.data[0].count })
             })
             .catch(err => console.log(err))
     }
@@ -79,7 +79,7 @@ class CampaignEdit extends React.Component {
             data.tags.push(data.campaign.tags[index])
             data.campaign.tags.splice(index, 1);
             this.getAudienceCount()
-            return {data}  
+            return { data }
         })
     }
 
@@ -89,7 +89,7 @@ class CampaignEdit extends React.Component {
             data.campaign.tags.push(data.tags[index])
             data.tags.splice(index, 1);
             this.getAudienceCount()
-            return {data}  
+            return { data }
         })
     }
 
@@ -130,18 +130,22 @@ class CampaignEdit extends React.Component {
                             <TextField fullWidth label="Campaign name" type="text" variant="outlined" value={campaign.name} onChange={(e) => this.setState({ username: e.target.value })} />
                             <h3 className="PaperInnerHeading">Audience settings</h3>
                             <div className="ChipHolder">
-                                <div className="ChipRow">
+                                {campaign.tags.length > 0 &&
+                                    <div className="ChipRow">
                                     {campaign.tags.map((e, i) => {
                                         return <Chip key={i} onDelete={() => this.handleDelete(i)} label={e} />
                                     })
                                     }
                                 </div>
-                                <div className="ChipRow">
+                                }
+                                {tags.length > 0 &&
+                                    <div className="ChipRow">
                                     {tags.map((e, i) => {
                                         return <Chip key={i} deleteIcon={<DoneIcon />} onDelete={() => this.handleAdd(i)} label={e} />
                                     })
                                     }
                                 </div>
+                                }
                                 <p>Total contacts: <strong>{audience_count}</strong></p>
                             </div>
                             <h3 className="PaperInnerHeading">Template settings</h3>
@@ -158,7 +162,7 @@ class CampaignEdit extends React.Component {
                                 </Select>
                             </div>
                             <div className="SaveButtonHolder">
-                                <Button><Link to={{pathname: "/template/edit", search: `?id=${campaign.template_id}`}}>EDIT TEMPLATE</Link></Button>
+                                <Button><Link to={{ pathname: "/template/edit", search: `?id=${campaign.template_id}` }}>EDIT TEMPLATE</Link></Button>
                                 <Button onClick={this.onSave}> SAVE </Button>
                             </div>
                         </form>

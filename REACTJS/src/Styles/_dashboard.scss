@@ -11,7 +11,7 @@
         height: 100vh;
         min-width: 250px;
     }
-    .Box {
+    .Menu {
         background-color: #ffffff10;
         border-radius: 5px;
         color: $d_textColor;
@@ -23,7 +23,7 @@
             cursor: pointer;
         }
     }
-    .BoxActive {
+    .MenuActive {
         background-color: #ffffff24;
         border-radius: 5px;
         color: $d_textColor;
@@ -91,7 +91,7 @@
         height: 100vh;
         min-width: 250px;
     }
-    .Box {
+    .Menu {
         background-color: #ffffff10;
         border-radius: 5px;
         color: $l_textColor;
@@ -103,7 +103,7 @@
             cursor: pointer;
         }
     }
-    .BoxActive {
+    .MenuActive {
         background-color: #ffffff24;
         border-radius: 5px;
         color: $l_textColor;

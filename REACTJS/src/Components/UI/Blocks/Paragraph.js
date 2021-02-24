@@ -2,14 +2,14 @@ import React, {useContext} from 'react';
 
 import MailContext from '../../../../../Context/MailContext';
 
-const Image = (props) => {
+const Paragraph = (props) => {
 
     const context = useContext(MailContext);
     const options = context.state.blocks[props.index].options;
 
     const setSidebarOptions = (index) => {
         context.handler({
-            sideBarOptions: 'Image',
+            sideBarOptions: 'Paragraph',
             sideBarTab: 'options',
             currentIndex: index
         });
@@ -17,11 +17,11 @@ const Image = (props) => {
 
     return (
         <tr style={options.style} onClick={() => {setSidebarOptions(props.index)}}>
-            <td>
-                <img alt={options.alt} style={options.imageStyle} width={options.width} height={options.height} align={options.align} src={options.src} />
+            <td id={`block-${props.index}`} tabindex="-1" >
+                <p>{options.content}</p>
             </td>
         </tr>
     )
 }
 
-export default Image;
+export default Paragraph;

@@ -33,7 +33,7 @@ class Hierarhy extends React.Component {
                             {...provided.droppableProps}
                         >
                             {this.context.state.blocks.map((e, i) => {
-                                return <HierarhyElement key={i} tag={e.tag} index={i} />
+                                return <HierarhyElement key={i} tag={e.tag} index={i} handleClick={this.props.handleClick} />
                             })}
                             {provided.placeholder}
                         </div>

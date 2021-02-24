@@ -32,7 +32,7 @@ class Campaigns extends React.Component {
             .catch(err => {
                 this.setState({
                     loading: false,
-                    data: [{}]
+                    data: []
                 });
             });
 

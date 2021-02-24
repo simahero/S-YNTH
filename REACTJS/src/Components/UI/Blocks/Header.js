@@ -21,7 +21,7 @@ const Header = (props) => {
 
     return (
         <tr stlye={options.style} onClick={() => {setSidebarOptions(props.index)}}>
-            <td>
+            <td id={`block-${props.index}`} tabindex="-1" >
                 <h1 align={options.align}>{options.content}</h1>
             </td>
         </tr>

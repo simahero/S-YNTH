@@ -21,7 +21,7 @@ export function image() {
             width: 600,
             height: 'auto',
             align: "center",
-            src: ''
+            src: './assets/images/placeholder.png'
         }
     })
 }

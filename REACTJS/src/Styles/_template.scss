@@ -3,13 +3,24 @@
 .dark {
     .EditMain{
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 60px);
         display: flex;
         background-color: #121212;
-        .EditSidebar{
-            flex: 20%;
-            height: 100vh;
+        overflow: hidden;
+        .EditSidebar {
+            flex: 30%;
+            height: calc(100vh - 60px);
+            padding: 1% 0;
             min-width: 250px;
+        }
+        .EditSidebarHolder{
+            height: 100%;
+            overflow-y: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
             .EditOptions{
                 color: #dddddd;
                 margin: 0 1%;
@@ -18,6 +29,10 @@
                 margin: 0 1%;
                 overflow-y: visible !important;
                 height: auto;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                flex-wrap: wrap;
             }
             .EditTableHolder{
                 display: block;
@@ -30,9 +45,28 @@
                 border-radius: 5px;
                 color: #dddddd;
                 text-align: center;
-                padding: 5px;
-                margin: 10px;
-                flex: 50%;
+                margin: 3px 0;
+                width: 32%;
+                font-size: 13px;
+                position: relative;
+                .Content {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    
+                }
+                &:after {
+                    content: "";
+                    display: block;
+                    padding-bottom: 100%;
+                  }
+                svg {
+                    font-size: 20px;
+                }
                 &:hover {
                     background-color: #ffffff16;
                     cursor: pointer;
@@ -43,8 +77,8 @@
             }
         }
         .EditPreview{
-            flex: 80%;
-            height: 100vh;
+            flex: 70%;
+            height: calc(100vh - 60px);
             padding: 1%;
             justify-content: center;
             align-items: center;
@@ -52,10 +86,18 @@
             background: rgb(18,18,18);
             background: linear-gradient(175deg, rgba(18,18,18,1) 0%, rgba(20,20,20,1) 100%);
             .EditPreviewHolder {
+                height: 100%;
+                overflow-y: auto;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
                 table tr td{
-                    &:hover {
+                    &:hover &:focus {
                         border: 1px solid black;
                         cursor: pointer;
+                        outline: -webkit-focus-ring-color auto 1px;
                     }
                 }
             }
@@ -66,31 +108,36 @@
 .light {
     .EditMain{
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 60px);
         display: flex;
-        .EditSidebar{
-            flex: 20%;
-            height: 100vh;
+        background-color: #dddddd;
+        overflow: hidden;
+        .EditSidebar {
+            flex: 25%;
+            height: calc(100vh - 60px);
+            padding: 1% 0;
             min-width: 250px;
-            background-color: #dddddd;
+        }
+        .EditSidebarHolder{
+            height: 100%;
+            overflow-y: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
             .EditOptions{
                 color: #121212;
                 margin: 0 1%;
-                .HeaderOptionsAlign{
-                    .AlignButtons{
-                        &:hover {
-                            background-color: #ffffff16;
-                        }
-                        svg {
-                            fill: #121212;
-                        }
-                    }
-                }
             }
             .EditBlocks{
                 margin: 0 1%;
                 overflow-y: visible !important;
                 height: auto;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                flex-wrap: wrap;
             }
             .EditTableHolder{
                 display: block;
@@ -99,15 +146,34 @@
                 width: 90%;
             }
             .EditBox {
-                background-color:#ffffff10;
+                background-color: #ffffff10;
                 border-radius: 5px;
                 color: #121212;
                 text-align: center;
-                padding: 5px;
-                margin: 10px;
-                flex: 50%;
+                margin: 3px 0;
+                width: 32%;
+                font-size: 13px;
+                position: relative;
+                .Content {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    
+                }
+                &:after {
+                    content: "";
+                    display: block;
+                    padding-bottom: 100%;
+                  }
+                svg {
+                    font-size: 20px;
+                }
                 &:hover {
-                    background-color:#ffffff16;
+                    background-color: #ffffff16;
                     cursor: pointer;
                 }
             }
@@ -116,8 +182,8 @@
             }
         }
         .EditPreview{
-            flex: 80%;
-            height: 100vh;
+            flex: 75%;
+            height: calc(100vh - 60px);
             padding: 1%;
             justify-content: center;
             align-items: center;
@@ -125,10 +191,18 @@
             background: rgb(221,221,221);
             background: linear-gradient(175deg,rgba(221, 221, 221, 1) 0%, rgba(219, 219, 219, 1) 100%);
             .EditPreviewHolder {
+                height: 100%;
+                overflow-y: auto;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
                 table tr td{
-                    &:hover {
+                    &:hover &:focus {
                         border: 1px solid black;
                         cursor: pointer;
+                        outline: -webkit-focus-ring-color auto 1px;
                     }
                 }
             }

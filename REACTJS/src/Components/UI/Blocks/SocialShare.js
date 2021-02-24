@@ -17,7 +17,7 @@ const SocialShare = (props) => {
 
     return (
         <tr style={options.style} onClick={() => {setSidebarOptions(props.index)}}>
-            <td style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}}>
+            <td id={`block-${props.index}`} tabindex="-1" style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}}>
             {options.social.map((s, i) => {
                 if (s.display === true){
                     return <a key={i} style={{margin: "5px", height: "auto"}} href={s.link} target="_blank" rel="noreferrer"><img width="32" height="32" alt='social-icon' src={s.img} /></a>

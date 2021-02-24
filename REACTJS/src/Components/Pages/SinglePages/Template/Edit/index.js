@@ -7,7 +7,7 @@ import LoadingScreen from '../../../../UI/LoadingScreen';
 import API from '../../../../../Utils/API/API';
 import DraggableModal from '../../../../UI/DraggableModal/DraggableModal';
 
-class Edit extends React.Component {
+class TemplateEdit extends React.Component {
 
     constructor(props) {
         super(props);
@@ -51,9 +51,10 @@ class Edit extends React.Component {
                         <LoadingScreen title="LOADING TEMPLATE . . ." />
                     }
                     <Nav />
-                    <DraggableModal blocks={this.state.blocks} />
                     <div className="EditMain">
-                        <Sidebar />
+                        <div className="EditSidebar">
+                            <Sidebar />
+                        </div>
                         <div className="EditPreview">
                             <div className="EditPreviewHolder">
                                 <Mail />
@@ -66,4 +67,4 @@ class Edit extends React.Component {
     }
 }
 
-export default Edit;
+export default TemplateEdit;

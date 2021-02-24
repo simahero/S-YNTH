@@ -12,12 +12,13 @@ import './Styles/styles.css';
 const Home = React.lazy(() => import('./Components/Pages/Home/Home'))
 const Login = React.lazy(() => import('./Components/Pages/Login/Login'))
 const Logout = React.lazy(() => import('./Components/Pages/Login/Logout'))
-const Edit = React.lazy(() => import('./Components/Pages/SinglePages/Template/EditTemplate/Edit'))
 const Dashboard = React.lazy(() => import('./Components/Pages/Dashboard/Dashboard'))
 
-const CampaignEdit = React.lazy(() => import('./Components/Pages/SinglePages/Campaign/CampaignEdit'));
-const CampaignAnalytics = React.lazy(() => import('./Components/Pages/SinglePages/Campaign/CampaignAnalytics'))
-const CampaignSend = React.lazy(() => import('./Components/Pages/SinglePages/Campaign/CampaignSend'));
+const CampaignEdit = React.lazy(() => import('./Components/Pages/SinglePages/Campaign/Edit'));
+const CampaignAnalytics = React.lazy(() => import('./Components/Pages/SinglePages/Campaign/Analytics'))
+const CampaignSend = React.lazy(() => import('./Components/Pages/SinglePages/Campaign/Send'));
+
+const TemplateEdit = React.lazy(() => import('./Components/Pages/SinglePages/Template/Edit'))
 
 class App extends React.Component {
 
@@ -118,7 +119,7 @@ class App extends React.Component {
                   <ProtectedRoute path='/campaign/analytics' Component={CampaignAnalytics} />
                   <ProtectedRoute path='/campaign/send' Component={CampaignSend} />
 
-                  <ProtectedRoute path='/template/edit' Component={Edit} />
+                  <ProtectedRoute path='/template/edit' Component={TemplateEdit} />
 
                 </Switch>
               </Suspense>

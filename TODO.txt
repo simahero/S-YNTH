@@ -1,28 +1,12 @@
 #TODOS
 
+previewtable -> ui
+
+table in table with width
+
 - SQL POOL
 
 - edit template modal https://www.w3schools.com/howto/howto_js_draggable.asp
-
-npm install react-draggable
-
-.box {
-  position: absolute;
-  cursor: move;
-  color: black;
-  max-width: 215px;
-  border-radius: 5px;
-  padding: 1em;
-  margin: auto;
-  user-select: none;
-}
-
-<Draggable handle="#handle">
-   <div className="box">
-      <span id="handle">Drag here</span>
-         <div style={{ padding: "1em" }}>Cannot drag here</div>
-   </div>
-</Draggable>
 
 - edit campaign -get templates (id, name)
 - edit campaign -get single template
@@ -166,3 +150,27 @@ CREATE TABLE `analytics` (
                 }
             }
         }, () => this.getAudienceCount()))
+
+        .DataTableHolder {
+            height: calc(100vh - 80px);
+            margin: 10px;
+            width: calc(100% - 20px);
+            background-color: #ffffff20;
+            border-radius: 4px;
+            text-align: center; 
+        }
+
+        <ul>
+                            <li
+                                onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefultOptions.header]}) }}
+                            ><Box className="EditBox" boxShadow={2}>Header</Box></li>
+                            <li
+                                onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefaultOptions.parahraph]}) }}
+                            ><Box className="EditBox" boxShadow={2}>Paragraph</Box></li>
+                            <li
+                                onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefaultOptions.image]}) }}
+                            ><Box className="EditBox" boxShadow={2}>Image</Box></li>
+                            <li
+                                onClick={() => { this.context.handler({blocks: [...this.context.state.blocks, DefaultOptions.socialshare]}) }}
+                            ><Box className="EditBox" boxShadow={2}>SocialShare</Box></li>
+                        </ul>

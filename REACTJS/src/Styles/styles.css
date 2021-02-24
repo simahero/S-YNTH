@@ -584,7 +584,7 @@
   min-width: 250px;
 }
 
-.dark .Box {
+.dark .Menu {
   background-color: #ffffff10;
   border-radius: 5px;
   color: #dddddd;
@@ -593,12 +593,12 @@
   margin: 10px;
 }
 
-.dark .Box:hover {
+.dark .Menu:hover {
   background-color: #ffffff16;
   cursor: pointer;
 }
 
-.dark .BoxActive {
+.dark .MenuActive {
   background-color: #ffffff24;
   border-radius: 5px;
   color: #dddddd;
@@ -607,7 +607,7 @@
   margin: 10px;
 }
 
-.dark .BoxActive:hover {
+.dark .MenuActive:hover {
   cursor: pointer;
 }
 
@@ -683,7 +683,7 @@
   min-width: 250px;
 }
 
-.light .Box {
+.light .Menu {
   background-color: #ffffff10;
   border-radius: 5px;
   color: #121212;
@@ -692,12 +692,12 @@
   margin: 10px;
 }
 
-.light .Box:hover {
+.light .Menu:hover {
   background-color: #ffffff16;
   cursor: pointer;
 }
 
-.light .BoxActive {
+.light .MenuActive {
   background-color: #ffffff24;
   border-radius: 5px;
   color: #121212;
@@ -706,7 +706,7 @@
   margin: 10px;
 }
 
-.light .BoxActive:hover {
+.light .MenuActive:hover {
   cursor: pointer;
 }
 
@@ -1014,67 +1014,120 @@
 
 .dark .EditMain {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 60px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   background-color: #121212;
+  overflow: hidden;
 }
 
 .dark .EditMain .EditSidebar {
-  -webkit-box-flex: 20%;
-      -ms-flex: 20%;
-          flex: 20%;
-  height: 100vh;
+  -webkit-box-flex: 30%;
+      -ms-flex: 30%;
+          flex: 30%;
+  height: calc(100vh - 60px);
+  padding: 1% 0;
   min-width: 250px;
 }
 
-.dark .EditMain .EditSidebar .EditOptions {
+.dark .EditMain .EditSidebarHolder {
+  height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dark .EditMain .EditSidebarHolder::-webkit-scrollbar {
+  display: none;
+}
+
+.dark .EditMain .EditSidebarHolder .EditOptions {
   color: #dddddd;
   margin: 0 1%;
 }
 
-.dark .EditMain .EditSidebar .EditBlocks {
+.dark .EditMain .EditSidebarHolder .EditBlocks {
   margin: 0 1%;
   overflow-y: visible !important;
   height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.dark .EditMain .EditSidebar .EditTableHolder {
+.dark .EditMain .EditSidebarHolder .EditTableHolder {
   display: block;
   margin: auto;
   margin-top: 1%;
   width: 90%;
 }
 
-.dark .EditMain .EditSidebar .EditBox {
+.dark .EditMain .EditSidebarHolder .EditBox {
   background-color: #ffffff10;
   border-radius: 5px;
   color: #dddddd;
   text-align: center;
-  padding: 5px;
-  margin: 10px;
-  -webkit-box-flex: 50%;
-      -ms-flex: 50%;
-          flex: 50%;
+  margin: 3px 0;
+  width: 32%;
+  font-size: 13px;
+  position: relative;
 }
 
-.dark .EditMain .EditSidebar .EditBox:hover {
+.dark .EditMain .EditSidebarHolder .EditBox .Content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.dark .EditMain .EditSidebarHolder .EditBox:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.dark .EditMain .EditSidebarHolder .EditBox svg {
+  font-size: 20px;
+}
+
+.dark .EditMain .EditSidebarHolder .EditBox:hover {
   background-color: #ffffff16;
   cursor: pointer;
 }
 
-.dark .EditMain .EditSidebar .SidebarHeader {
+.dark .EditMain .EditSidebarHolder .SidebarHeader {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 .dark .EditMain .EditPreview {
-  -webkit-box-flex: 80%;
-      -ms-flex: 80%;
-          flex: 80%;
-  height: 100vh;
+  -webkit-box-flex: 70%;
+      -ms-flex: 70%;
+          flex: 70%;
+  height: calc(100vh - 60px);
   padding: 1%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1087,82 +1140,139 @@
   background: linear-gradient(175deg, #121212 0%, #141414 100%);
 }
 
-.dark .EditMain .EditPreview .EditPreviewHolder table tr td:hover {
+.dark .EditMain .EditPreview .EditPreviewHolder {
+  height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dark .EditMain .EditPreview .EditPreviewHolder::-webkit-scrollbar {
+  display: none;
+}
+
+.dark .EditMain .EditPreview .EditPreviewHolder table tr td:hover .dark .EditMain .EditPreview .EditPreviewHolder table tr td:focus {
   border: 1px solid black;
   cursor: pointer;
+  outline: -webkit-focus-ring-color auto 1px;
 }
 
 .light .EditMain {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 60px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: #dddddd;
+  overflow: hidden;
 }
 
 .light .EditMain .EditSidebar {
-  -webkit-box-flex: 20%;
-      -ms-flex: 20%;
-          flex: 20%;
-  height: 100vh;
+  -webkit-box-flex: 25%;
+      -ms-flex: 25%;
+          flex: 25%;
+  height: calc(100vh - 60px);
+  padding: 1% 0;
   min-width: 250px;
-  background-color: #dddddd;
 }
 
-.light .EditMain .EditSidebar .EditOptions {
+.light .EditMain .EditSidebarHolder {
+  height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.light .EditMain .EditSidebarHolder::-webkit-scrollbar {
+  display: none;
+}
+
+.light .EditMain .EditSidebarHolder .EditOptions {
   color: #121212;
   margin: 0 1%;
 }
 
-.light .EditMain .EditSidebar .EditOptions .HeaderOptionsAlign .AlignButtons:hover {
-  background-color: #ffffff16;
-}
-
-.light .EditMain .EditSidebar .EditOptions .HeaderOptionsAlign .AlignButtons svg {
-  fill: #121212;
-}
-
-.light .EditMain .EditSidebar .EditBlocks {
+.light .EditMain .EditSidebarHolder .EditBlocks {
   margin: 0 1%;
   overflow-y: visible !important;
   height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.light .EditMain .EditSidebar .EditTableHolder {
+.light .EditMain .EditSidebarHolder .EditTableHolder {
   display: block;
   margin: auto;
   margin-top: 1%;
   width: 90%;
 }
 
-.light .EditMain .EditSidebar .EditBox {
+.light .EditMain .EditSidebarHolder .EditBox {
   background-color: #ffffff10;
   border-radius: 5px;
   color: #121212;
   text-align: center;
-  padding: 5px;
-  margin: 10px;
-  -webkit-box-flex: 50%;
-      -ms-flex: 50%;
-          flex: 50%;
+  margin: 3px 0;
+  width: 32%;
+  font-size: 13px;
+  position: relative;
 }
 
-.light .EditMain .EditSidebar .EditBox:hover {
+.light .EditMain .EditSidebarHolder .EditBox .Content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.light .EditMain .EditSidebarHolder .EditBox:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.light .EditMain .EditSidebarHolder .EditBox svg {
+  font-size: 20px;
+}
+
+.light .EditMain .EditSidebarHolder .EditBox:hover {
   background-color: #ffffff16;
   cursor: pointer;
 }
 
-.light .EditMain .EditSidebar .SidebarHeader {
+.light .EditMain .EditSidebarHolder .SidebarHeader {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 .light .EditMain .EditPreview {
-  -webkit-box-flex: 80%;
-      -ms-flex: 80%;
-          flex: 80%;
-  height: 100vh;
+  -webkit-box-flex: 75%;
+      -ms-flex: 75%;
+          flex: 75%;
+  height: calc(100vh - 60px);
   padding: 1%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1175,9 +1285,21 @@
   background: linear-gradient(175deg, #dddddd 0%, #dbdbdb 100%);
 }
 
-.light .EditMain .EditPreview .EditPreviewHolder table tr td:hover {
+.light .EditMain .EditPreview .EditPreviewHolder {
+  height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.light .EditMain .EditPreview .EditPreviewHolder::-webkit-scrollbar {
+  display: none;
+}
+
+.light .EditMain .EditPreview .EditPreviewHolder table tr td:hover .light .EditMain .EditPreview .EditPreviewHolder table tr td:focus {
   border: 1px solid black;
   cursor: pointer;
+  outline: -webkit-focus-ring-color auto 1px;
 }
 
 .dark .MuiDataGrid-root {
@@ -1238,175 +1360,94 @@
   color: #dddddd;
 }
 
-.dark .DraggableModal {
-  position: absolute;
-  z-index: 9;
-  background-color: #353535;
-  border: 1px solid #ffffff10;
-  text-align: center;
-  border-radius: 4px;
-  width: 250px;
-}
-
-.dark .DraggableModal .DraggableModalHeader {
-  padding: 10px;
-  z-index: 10;
-  background-color: #121212;
-  color: #dddddd;
-  border-radius: 4px;
+.DraggedOut {
+  width: 100%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
 }
 
-.dark .DraggableModal .DraggableModalHeader .DraggableModalHeaderHandle {
-  cursor: move;
-  -webkit-box-flex: 10%;
-      -ms-flex: 10%;
-          flex: 10%;
+.DraggedIn {
+  border: dashed #121212 3px;
+  width: 100%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
 }
 
-.dark .DraggableModal .DraggableModalHeader .DraggableModalHeaderHandle svg {
-  fill: #dddddd;
-}
-
-.dark .DraggableModal .DraggableModalHeader .DraggableModalHeaderContent {
-  text-align: center;
-  -webkit-box-flex: 9;
-      -ms-flex: 9 0%;
-          flex: 9 0%;
-}
-
-.dark .DraggableModal .DraggableModalBody {
-  padding: 10px;
-  z-index: 10;
-  background-color: #353535;
-  color: #dddddd;
-  border-radius: 4px;
-}
-
-.light .DraggableModal {
-  position: absolute;
-  z-index: 9;
-  background-color: #dddddd;
-  border: 1px solid #00000010;
-  text-align: center;
-  border-radius: 4px;
-  width: 250px;
-}
-
-.light .DraggableModal .DraggableModalHeader {
-  padding: 10px;
-  z-index: 10;
-  background-color: #a7a7a7;
+.DragError {
   color: #121212;
-  border-radius: 4px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.light .DraggableModal .DraggableModalHeader .DraggableModalHeaderHandle {
-  cursor: move;
-  -webkit-box-flex: 10%;
-      -ms-flex: 10%;
-          flex: 10%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.light .DraggableModal .DraggableModalHeader .DraggableModalHeaderHandle svg {
-  fill: #121212;
-}
-
-.light .DraggableModal .DraggableModalHeader .DraggableModalHeaderContent {
+  border-radius: 5px;
+  width: 90%;
   text-align: center;
-  -webkit-box-flex: 9;
-      -ms-flex: 9 0%;
-          flex: 9 0%;
+  background-color: #CF6679;
 }
 
-.light .DraggableModal .DraggableModalBody {
-  padding: 10px;
-  z-index: 10;
-  background-color: #dddddd;
-  color: #121212;
-  border-radius: 4px;
-}
-
-.light .ModalElementHolder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.dark .HierarchyElement {
   border-bottom: 1px solid #00000016;
-  padding: 5px 5px;
 }
 
-.light .ModalElementHolder:hover {
+.dark .HierarchyElement:hover {
   background-color: #00000016;
 }
 
-.light .ModalElementHolder .ModalElementTitle {
+.dark .HierarchyElement .HierarchyElementHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px 5px;
+}
+
+.dark .HierarchyElement .HierarchyElementHolder .HierarchyElementTitle {
   -webkit-box-flex: 80%;
       -ms-flex: 80%;
           flex: 80%;
+  color: #dddddd;
   text-align: left;
   min-height: 30px;
   font-weight: 200;
   font-style: italic;
 }
 
-.light .ModalElementHolder .ModalElementTitle:hover {
+.dark .HierarchyElement .HierarchyElementHolder .HierarchyElementTitle:hover {
   cursor: pointer;
 }
 
-.light .ModalElementHolder .ModalElementAction {
+.dark .HierarchyElement .HierarchyElementHolder .HierarchyElementAction {
   -webkit-box-flex: 20%;
       -ms-flex: 20%;
           flex: 20%;
@@ -1425,20 +1466,139 @@
           justify-content: center;
 }
 
-.light .ModalElementHolder .ModalElementAction .ModalElementDelete {
+.dark .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementDelete {
   padding: 3px;
 }
 
-.light .ModalElementHolder .ModalElementAction .ModalElementDelete:hover {
+.dark .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementDelete:hover {
   cursor: pointer;
 }
 
-.light .ModalElementHolder .ModalElementAction .ModalElementHandle {
+.dark .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementDelete svg {
+  fill: #dddddd;
+}
+
+.dark .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementHandle {
   padding: 3px;
 }
 
-.light .ModalElementHolder .ModalElementAction .ModalElementHandle:hover {
+.dark .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementHandle:hover {
   cursor: move;
+}
+
+.dark .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementHandle svg {
+  fill: #dddddd;
+}
+
+.dark .HierarchyAdd {
+  min-height: 30px;
+  height: 30px;
+  padding: 5px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #dddddd;
+  cursor: pointer;
+}
+
+.dark .HierarchyAdd svg {
+  margin: 0 10px;
+  fill: #dddddd;
+}
+
+.light .HierarchyElement {
+  border-bottom: 1px solid #00000016;
+}
+
+.light .HierarchyElement:hover {
+  background-color: #00000016;
+}
+
+.light .HierarchyElement .HierarchyElementHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px 5px;
+}
+
+.light .HierarchyElement .HierarchyElementHolder .HierarchyElementTitle {
+  -webkit-box-flex: 80%;
+      -ms-flex: 80%;
+          flex: 80%;
+  text-align: left;
+  min-height: 30px;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.light .HierarchyElement .HierarchyElementHolder .HierarchyElementTitle:hover {
+  cursor: pointer;
+}
+
+.light .HierarchyElement .HierarchyElementHolder .HierarchyElementAction {
+  -webkit-box-flex: 20%;
+      -ms-flex: 20%;
+          flex: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.light .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementDelete {
+  padding: 3px;
+}
+
+.light .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementDelete:hover {
+  cursor: pointer;
+}
+
+.light .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementHandle {
+  padding: 3px;
+}
+
+.light .HierarchyElement .HierarchyElementHolder .HierarchyElementAction .HierarchyElementHandle:hover {
+  cursor: move;
+}
+
+.light .HierarchyAdd {
+  min-height: 30px;
+  height: 30px;
+  padding: 5px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 * {

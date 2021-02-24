@@ -52,12 +52,11 @@ module.exports = (connection) => {
 
 	router.delete('/campaigns', verify, (req, res) => {
 		let user_id = req.user.user_id;
-		let campaign_id = req.query.campaign_id;
+		let campaign_id = req.body.id;
 
-		SQLPromise.query(connection, "DELETE * FROM campaigns WHERE user_id = ? AND id = ?", [user_id, campaign_id])
+		SQLPromise.query(connection, "DELETE FROM campaigns WHERE user_id = ? AND id = ?", [user_id, campaign_id])
 			.then(results => res.status(200).send(results))
 			.catch(error => res.status(400).send(error))
-
 	})
 
 	router.get('/campaigns/edit', verify, async (req, res) => {

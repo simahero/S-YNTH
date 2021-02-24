@@ -3,12 +3,13 @@ import { Draggable } from 'react-beautiful-dnd'
 import MailContext from '../../../../../Context/MailContext'
 import { MdDragHandle } from 'react-icons/md';
 import { AiFillDelete } from 'react-icons/ai';
+import { BiAddToQueue } from 'react-icons/bi';
 
 class HierarhyElement extends React.Component {
 
     static contextType = MailContext
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             showAdd: false
@@ -27,32 +28,48 @@ class HierarhyElement extends React.Component {
         }
     }
 
+    handleDelete = (index) => {
+        let tmp = Object.assign({}, this.context.state)
+        tmp.blocks.splice(this.props.index, 1);
+        this.context.handler(tmp)
+    }
+
+    handleMouseOver = () => {
+        this.setState(p => ({ showAdd: !p.showAdd }))
+        document.getElementById(`block-${this.props.index}`).focus()
+    }
+
+    handleMouseExit = () => {
+        this.setState(p => ({ showAdd: !p.showAdd }))
+        document.getElementById(`block-${this.props.index}`).blur()
+    }
+
     render() {
         return (
             <Draggable draggableId={this.props.index + ''} index={this.props.index}>
                 {(provided, snapshot) => (
                     <div
-                        className="ModalElement"
-                        onMouseEnter={() => { this.setState(p => ({showAdd: !p})) }}
-                        onMouseLeave={() => { this.setState(p => ({showAdd: !p})) }}
+                        className="HierarchyElement"
+                        onMouseEnter={this.handleMouseOver}
+                        onMouseLeave={this.handleMouseExit}
                         ref={provided.innerRef}
                         {...provided.draggableProps}>
-                        <div className="ModalElementHolder" >
-                            <div className="ModalElementTitle" onClick={this.setSidebarOptions}>
+                        <div className="HierarchyElementHolder" >
+                            <div className="HierarchyElementTitle" onClick={this.setSidebarOptions}>
                                 {this.props.tag}
                             </div>
-                            <div className="ModalElementAction">
-                                <div className="ModalElementDelete">
-                                    <AiFillDelete />
+                            <div className="HierarchyElementAction">
+                                <div className="HierarchyElementDelete">
+                                    <AiFillDelete onClick={this.handleDelete} />
                                 </div>
-                                <div className="ModalElementHandle" {...provided.dragHandleProps}>
+                                <div className="HierarchyElementHandle" {...provided.dragHandleProps}>
                                     <MdDragHandle />
                                 </div>
                             </div>
                         </div>
                         {this.state.showAdd &&
-                            <div className="ModalAdd">
-                                ADD +
+                            <div className="HierarchyAdd">
+                                <BiAddToQueue style={{ cursor: 'pointer' }} onClick={this.props.handleClick} />
                             </div>
                         }
                     </div>
