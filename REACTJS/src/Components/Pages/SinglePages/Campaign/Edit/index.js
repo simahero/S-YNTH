@@ -113,6 +113,7 @@ class CampaignEdit extends React.Component {
 
         let { loading, audience_count, data } = this.state
         let { campaign, tags, templates, template_content } = data
+        let { name } = campaign
 
         return (
             <Fragment>
@@ -127,7 +128,7 @@ class CampaignEdit extends React.Component {
                     <Paper className="Paper" elevation={3} >
                         <form className="PaperInner">
                             <h3 className="PaperInnerHeading">Campaign settings</h3>
-                            <TextField fullWidth label="Campaign name" type="text" variant="outlined" value={campaign.name} onChange={(e) => this.setState({ username: e.target.value })} />
+                            <TextField fullWidth label="Campaign name" type="text" variant="outlined" value={campaign.name} onChange={(e) => this.setState({ name: e.target.value })} />
                             <h3 className="PaperInnerHeading">Audience settings</h3>
                             <div className="ChipHolder">
                                 {campaign.tags.length > 0 &&

@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import { FaAlignLeft, FaAlignCenter, FaAlignRight, FaAlignJustify } from "react-icons/fa";
 import './Options.css';
-import MailContext from '../../../../../../Context/MailContext';
+import MailContext from '../../Context/MailContext';
 
 class HeaderOptions extends React.Component {
 

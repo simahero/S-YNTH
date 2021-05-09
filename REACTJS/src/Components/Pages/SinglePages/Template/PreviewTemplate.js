@@ -1,10 +1,10 @@
 import React from 'react';
 import MailContext from '../../../Context/MailContext';
 
-import Header from './EditTemplate/Blocks/Header';
-import Image from './EditTemplate/Blocks/Image';
-import Paragraph from './EditTemplate/Blocks/Paragraph';
-import SocialShare from './EditTemplate/Blocks/SocialShare';
+import Header from '../../../UI/Blocks/Header';
+import Image from '../../../UI/Blocks/Image';
+import Paragraph from '../../../UI/Blocks/Paragraph';
+import SocialShare from '../../../UI/Blocks/SocialShare';
 
 class PreviewTemplate extends React.Component {
 

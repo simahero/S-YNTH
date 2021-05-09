@@ -13,7 +13,7 @@ const analytics = require('./Routes/Database/Track')
 const mail = require('./Routes/Database/Mail')
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 //SQL CONNECTION SETUP
 var connection = mysql.createConnection({
