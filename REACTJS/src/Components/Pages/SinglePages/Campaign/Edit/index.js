@@ -18,7 +18,7 @@ class CampaignEdit extends React.Component {
             audience_count: 0,
             data: {
                 campaign: {
-                    name: '',
+                    name: 'asd',
                     template_id: -1,
                     tags: [],
                     settings: null
@@ -113,7 +113,6 @@ class CampaignEdit extends React.Component {
 
         let { loading, audience_count, data } = this.state
         let { campaign, tags, templates, template_content } = data
-        let { name } = campaign
 
         return (
             <Fragment>
@@ -128,24 +127,42 @@ class CampaignEdit extends React.Component {
                     <Paper className="Paper" elevation={3} >
                         <form className="PaperInner">
                             <h3 className="PaperInnerHeading">Campaign settings</h3>
-                            <TextField fullWidth label="Campaign name" type="text" variant="outlined" value={campaign.name} onChange={(e) => this.setState({ name: e.target.value })} />
+                            <TextField 
+                                fullWidth 
+                                label="Campaign name" 
+                                type="text" 
+                                variant="outlined" 
+                                value={campaign.name} 
+                                onChange= {e => {
+                                    this.setState(prevState => ({
+                                        ...prevState,
+                                        data : {
+                                            ...prevState.data,
+                                            campaign: {
+                                                ...prevState.data.campaign,
+                                                name: e.target.value
+                                            }
+                                        }
+                                    }))
+                               }}
+                            />
                             <h3 className="PaperInnerHeading">Audience settings</h3>
                             <div className="ChipHolder">
                                 {campaign.tags.length > 0 &&
                                     <div className="ChipRow">
-                                    {campaign.tags.map((e, i) => {
-                                        return <Chip key={i} onDelete={() => this.handleDelete(i)} label={e} />
-                                    })
-                                    }
-                                </div>
+                                        {campaign.tags.map((e, i) => {
+                                            return <Chip key={i} onDelete={() => this.handleDelete(i)} label={e} />
+                                        })
+                                        }
+                                    </div>
                                 }
                                 {tags.length > 0 &&
                                     <div className="ChipRow">
-                                    {tags.map((e, i) => {
-                                        return <Chip key={i} deleteIcon={<DoneIcon />} onDelete={() => this.handleAdd(i)} label={e} />
-                                    })
-                                    }
-                                </div>
+                                        {tags.map((e, i) => {
+                                            return <Chip key={i} deleteIcon={<DoneIcon />} onDelete={() => this.handleAdd(i)} label={e} />
+                                        })
+                                        }
+                                    </div>
                                 }
                                 <p>Total contacts: <strong>{audience_count}</strong></p>
                             </div>

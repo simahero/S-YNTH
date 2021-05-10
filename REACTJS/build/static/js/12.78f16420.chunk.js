@@ -1,0 +1,2 @@
+(this["webpackJsonpsynth-react"]=this["webpackJsonpsynth-react"]||[]).push([[12],{201:function(t,a,s){"use strict";s.r(a);var e=s(1),n=s(0),c=s(2),i=s(13);a.default=function(){var t=Object(n.useContext)(i.b);return Object(e.jsxs)("div",{children:[t.isAuth&&Object(e.jsx)(c.a,{to:{pathname:"/campaigns",state:{dashboard:"campaigns"}}}),!t.isAuth&&Object(e.jsx)(c.a,{to:{pathname:"/login"}})]})}}}]);
+//# sourceMappingURL=12.78f16420.chunk.js.map
