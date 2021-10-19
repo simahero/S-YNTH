@@ -1,9 +1,11 @@
+import { Transporter } from "nodemailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
+
 const nodemailer = require('nodemailer');
 
-module.exports = () => {
-
-    return new Promise((resolve, reject) => {
-        nodemailer.createTestAccount((err, account) => {
+export default function getTransporter() {
+    return new Promise<Transporter<SMTPTransport.SentMessageInfo>>  ((resolve, reject) => {
+        nodemailer.createTestAccount((err: Error, account: any) => {
             if (err) reject(err)
             if (account) {
                 var transport = nodemailer.createTransport({

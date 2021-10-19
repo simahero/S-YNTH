@@ -1,5 +1,4 @@
-module.exports = function (json) {
-
+export default function JSON2Mail(json: any) {
     let html = '<table align="center" bgcolor="white" width="600" style="max-width: 600px; margin: auto; background-color: white;"><tbody>';
 
     let style = '';
@@ -74,5 +73,4 @@ module.exports = function (json) {
     html += '</tbody></table>';
 
     return html;
-
 }

@@ -1,50 +1,49 @@
 import express, { Request, Response } from "express";
-import mysql = require('mysql');
 import jwt = require('jwt-simple');
 import bcrypt = require('bcrypt');
 
 import { query, close } from '../database/Database'
+import config from "../../config/config";
 
 const router = express.Router();
 const salt = 10;
 
-router.post('/register', async(req, res) => {
+router.post('/register', async (req, res) => {
     let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
 
     // CHECK IF EMAIL ALREADY EXISTS
-
     try {
-        const response = await query('SELECT * FROM users WHERE email = ?', [email])
-        if (response.length > 0) {
+        const emailResponse = await query('SELECT * FROM users WHERE email = ?', [email])
+        if (emailResponse.length > 0) {
             return res.status(409).send('Email already used!');
         } else {
             // CREATE HASHED PASSWORD AND STORE IT
-            bcrypt.hash(password, salt, (err, hash) => {
+            bcrypt.hash(password, salt, async (err, hash) => {
                 if (err) return res.status(500).send('Internal server error!');
                 if (hash) {
-                    query('INSERT INTO users (username, email, password) VALUES (?)', [[username, email, hash]], (error: { toString: () => any; }, result: { insertId: any; }) => {
-                        if (error) return res.status(500).send(error.toString());
-                        if (result) {
-                            console.log(result);
-                            const token = jwt.encode({
-                                user_id: result.insertId,
-                            }, process.env.JWT_SECRET ?? '');
-                            res.status(200).send({
-                                token
-                            });
-                        }
-                    })
+                    try {
+                        const userResponse = await query('INSERT INTO users (username, email, password) VALUES (?)', [[username, email, hash]])
+                        const token = jwt.encode({
+                            user_id: userResponse.insertId,
+                        }, config.JWT.SECRET);
+
+                        res.status(200).send({ token });
+                    } catch (err) {
+                        return res.status(500).send('Internal server error!');
+                    }
                 }
             })
         }
     } catch (err) {
         return res.status(500).send('Internal server error!');
     }
+
+    close();
 })
 
-router.post('/login', (req:Request, res:Response) => {
+router.post('/login', (req: Request, res: Response) => {
     let username = req.body.username;
     let password = req.body.password;
 
