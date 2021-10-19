@@ -29,17 +29,12 @@ connection.connect((err) => {
     console.log("Connected!");
 });
 
-
-
-
-
 const app = express();
 
 //MIDDLEWARES SETUP
 app.use(cors());
 app.use(express.static(path.join(__dirname, '../REACTJS/build')));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.json();
 
 //ROUTES
 app.use('/api/v1/auth', auth(connection));

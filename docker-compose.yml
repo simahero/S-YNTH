@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - SQL_PASSWORD=$SQL_PASSWORD
+      - SQL_DATABASE=$SQL_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$SQL_PORT_DOCKER
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - backend
+  
+  synth-api:
+    depends_on:
+      - mysqldb
+    build: ./synth-api
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    environment:
+      - SQL_HOST=$SQL_HOST
+      - SQL_USER=$SQL_USER
+      - SQL_PASSWORD=$SQL_PASSWORD
+      - SQL_DATABASE=$SQL_DATABASE
+      - SQL_PORT=$SQL_PORT_DOCKER
+      - CLIENT_ORIGIN=$CLIENT_ORIGIN
+    networks:
+      - backend
+      - frontend
+
+  synth-client:
+    depends_on:
+      - synth-api
+    build:
+      context: ./synth-client
+      args:
+        - REACT_APP_API_BASE_URL=$CLIENT_API_BASE_URL
+    ports:
+      - $REACT_LOCAL_PORT:$REACT_DOCKER_PORT
+    networks:
+      - frontend  
+
+volumes: 
+  db:
+
+networks:
+  backend:
+  frontend:

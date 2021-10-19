@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const jwt = require('jwt-simple');
 const bcrypt = require('bcrypt');
+const SQLPromise = require('../../Utils/SQLPromise');
+
 const salt = 10;
 
 module.exports = (connection) => {
@@ -11,7 +13,7 @@ module.exports = (connection) => {
         var password = req.body.password;
 
         //CHECK IF EMAIL ALREADY EXISTS
-        connection.query('SELECT * FROM users WHERE email = ?', [email], (error, result) => {
+        SQLPromise.query(connection, 'SELECT * FROM users WHERE email = ?', [email], (error, result) => {
             if (error) return res.status(500).send('Internal server error!');
             if (result.length > 0) {
                 return res.status(409).send('Email already used!');
@@ -20,7 +22,7 @@ module.exports = (connection) => {
                 bcrypt.hash(password, salt, (err, hash) => {
                     if (err) return res.status(500).send('Internal server error!');
                     if (hash) {
-                        connection.query('INSERT INTO users (username, email, password) VALUES (?)', [[username, email, hash]], (error, result) => {
+                        SQLPromise.query(connection, 'INSERT INTO users (username, email, password) VALUES (?)', [[username, email, hash]], (error, result) => {
                             if (error) return res.status(500).send(error.toString());
                             if (result) {
                                 console.log(result);
@@ -42,7 +44,7 @@ module.exports = (connection) => {
         var username = req.body.username;
         var password = req.body.password;
 
-        connection.query('SELECT * FROM users WHERE username = ? OR email = ?', [username, username], (error, result) => {
+        SQLPromise.query(connection, 'SELECT * FROM users WHERE username = ? OR email = ?', [username, username], (error, result) => {
             if (error) return res.status(500).send('Internal server error!');
 
             if (result.length > 0) {
